@@ -20,6 +20,14 @@ app.post("/", (req, res) => {
     console.log(newData)
     res.json(newData)
 })
+
+app.put("/:id", (req, res) => {
+    const id = req.params.id
+    const updatedData = req.body
+    Data[id] = updatedData
+    res.json(updatedData)
+})
+
 app.listen(port,()=>{
     console.log(`Server is running at ${port}`)
 })
