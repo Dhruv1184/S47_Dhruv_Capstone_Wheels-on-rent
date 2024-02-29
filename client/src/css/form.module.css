@@ -18,7 +18,8 @@
     width: 40vw;
     padding: 2vh;
     overflow-y:auto;
-    backdrop-filter: blur(10vh);
+    backdrop-filter: blur(1vh);
+    background-color: rgba(255, 255, 255, 0.607);
     border-radius: 2vh;
     box-shadow: #03254c 2px 2px 2vh;
 }
@@ -36,6 +37,7 @@ input{
     font-size: 7vh;
     margin: 0.9vh 2vw;
     font-weight: 900;
+    cursor:default;
 }
 .cancel,.submit{
     font-size: 4vh;

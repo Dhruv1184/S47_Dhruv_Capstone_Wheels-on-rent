@@ -4,7 +4,7 @@ const Navigation = () => {
   return (
     <div>
       <div className={style.slider}>
-        <div>
+        <div >
           <div className={style.upperLine}></div><br />
           <div className={style.middleLine}></div><br />
           <div className={style.lowerLine}></div><br />
