@@ -16,3 +16,5 @@ My Topic is Wheels-on-rent
 4. Start working on front end part i.e client side.
 5. After completing my frontend part I am going to use 3rd party authentication and autherization by google.
 6. Deploy frontend.  
+
+Deployed link:- https://65dd743138c93481a15ea23a--glistening-druid-e2f465.netlify.app/
