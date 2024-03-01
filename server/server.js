@@ -7,7 +7,7 @@ const Data = require("./Data.json");
 const rent = require("./routes/rent");
 const sale = require("./routes/sale");
 app.use(cors())
-
+app.use(express.static('../server'));
 app.use('/',rent);
 app.use('/',sale);
 app.listen(port,()=>{
