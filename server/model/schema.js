@@ -4,14 +4,16 @@ const Schema = new mongoose.Schema({
     owner: String,
     vehicle: String,
     model: String,
-    vehicleType: String,//4 wheelers, 2 wheelers
-    year: Number,
+    year: String,
     price: Number,//per hour
-    rc: String,//img
-    vehicleImg: String,//img
+    registration: String,//img,
+    address: String,
+    pincode: String,
     contact: String,
-    ownerImg: String,//img
-    vehicleNo: String
+    vehicleImg: [{type: String}],//img
+    ownerImg: [{type: String}],//img
+    // vehicleNo: String
+    // vehicleType: String,//4 wheelers, 2 wheelers
 })
 
 const rentModel = mongoose.model("rent", Schema)

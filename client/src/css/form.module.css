@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden;
+}
+.body{
+    background: url('../assets/FormBgImg.jpg');
+    background-size: 100% 100%;
+    height: 100vh;
+    padding-top: 2vh;
+    
+}
+.box{
+    margin: 2vh auto;
+    font-size: 3vh;
+    border:1px solid black;
+    height: 90vh;
+    width: 40vw;
+    padding: 2vh;
+    overflow-y:auto;
+    backdrop-filter: blur(1vh);
+    background-color: rgba(255, 255, 255, 0.607);
+    border-radius: 2vh;
+    box-shadow: #03254c 2px 2px 2vh;
+}
+input{
+    font-size:2.5vh ;
+    margin: 0.5vh;
+    border-radius: 1vh;
+    padding: 1vh;
+    outline: none;
+    width: 20vw;
+}
+
+.heading{
+    text-align: center;
+    font-size: 7vh;
+    margin: 0.9vh 2vw;
+    font-weight: 900;
+    cursor:default;
+}
+.cancel,.submit{
+    font-size: 4vh;
+    padding: 1vh;
+    border-radius: 1vh;
+    width: 10vw;
+    box-shadow: 1px 1px 1vh #03254c inset;
+    cursor: pointer;
+}
+
+.submit:hover,.cancel:hover{
+    box-shadow: 2px 2px 2vh #03254c ;
+}
+.btn{
+    display: flex;
+    margin-top: 1vh;
+    justify-content: space-evenly;
+}
+.error{
+    color: red;
+}
+
+label{
+    font-size: 4vh;
+    cursor: pointer;
+    font-weight: 900;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.data{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+::-webkit-scrollbar{
+    width: 15px;
+}
+/* ::-webkit-scrollbar-track{
+    background-color: rgb(22, 164, 235);
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(#0a0808, #03254c);
+} */

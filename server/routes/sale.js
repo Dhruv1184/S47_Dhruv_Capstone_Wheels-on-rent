@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const {saleModel} = require("../model/schema");
-
+const {saleUpload} = require("../middleware/saleImage.middleware.js")
+const  {validData} = require("../model/validation")
 const sale = express()
 
 
@@ -16,49 +17,75 @@ mongoose.connect(process.env.Mongoose_URL, {
     console.log(err)
 })
 
-sale.get("/ping",(req, res)=>{
-    res.send("Pong")
+sale.get("/ping", async (req, res)=>{
+    try {
+        res.send("Pong")
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: error.message})
+        
+    }
 })
 
-sale.get("/sale", (req, res) => {
-    saleModel.find({})
-    .then((data)=>{
+sale.get("/sale/data", async (req, res) => {
+    try {
+        const data = await saleModel.find({})
         res.json(data)
-    }).catch((err)=>{
-        console.log(err)
-    })     
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: error.message})
+    }
     
 })
 
-sale.post("/sale",  (req, res) => {
+sale.post("/sale/insert", saleUpload.fields([{name: "ownerImg", maxCount: 1},{name: "vehicleImg", maxCount: 1}]), async (req, res) => {
     const newData = req.body
-    saleModel.create(newData)
-    .then(()=>{
-        res.json(newData)
-    }).catch((err)=>{
-        console.log(err)
-    })
+    let OwnerImg = []
+    let VehicleImg = []
+    if(req.files && req.files.ownerImg && req.files.vehicleImg && Array.isArray(req.files.ownerImg) && Array.isArray(req.files.vehicleImg)){
+        for(let i = 0; i < req.files.ownerImg.length; i++){
+            OwnerImg.push(req.files.ownerImg[i].path)
+        }
+        for(let i = 0; i < req.files.vehicleImg.length; i++){
+            VehicleImg.push(req.files.vehicleImg[i].path)
+        }
+        newData.ownerImg = OwnerImg
+        newData.vehicleImg = VehicleImg
+    }
 
+    try {
+        const {error} = validData(req.body)
+        if(error) return res.json({message:error.message})
+        // console.log(req.body)
+        await saleModel.create(newData)
+        res.json(req.body)
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: error.message}) 
+    }
 })
 
-sale.get("/sale/:id", (req, res) => {
-    const id = req.params.id
-    saleModel.findById(id)
-    .then((data)=>{
-        res.json(data)
-    }).catch((err)=>{
-        console.log(err)
-    })
+sale.get("/sale/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        const Data = await saleModel.findById(id)
+        res.json(Data)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: error.message})
+    }
 })
-sale.put("/sale/:id",(req, res) => {
-    const id = req.params.id
-    const updatedData = req.body
-    saleModel.findByIdAndUpdate(id, updatedData)
-    .then(()=>{
+
+sale.put("/sale/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        const updatedData = req.body
+        await saleModel.findByIdAndUpdate(id, updatedData)
         res.json(updatedData)
-    }).catch((err)=>{
-        console.log(err)
-    })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: error.message})
+    }
 })
 
 module.exports = sale
