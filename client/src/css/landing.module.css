@@ -19,7 +19,7 @@
     font-size: 3vh;
     border-color: #03254c;
     box-shadow: 2px 2px 2vh inset;
-    cursor:context-menu;
+    cursor:pointer;
 }
 .loginBtn:hover{
     box-shadow: 2px 2px 2vh #03254c;
@@ -32,11 +32,12 @@
     justify-content: space-between;
     background-color: white;
     padding: 1vh 2vw;
+    align-items: center;
 }
 
 .logo{
     size: 100% 100%;
-    height: 5vh;
+    height: 10vh;
 }
 .title{
     color: #03254c;
@@ -87,7 +88,7 @@
 }
 .brandLogo{
     size: 100% 100%;
-    height: 20vh;
+    height: 15vh;
 }
 .brandName{
     color: #03254c;

@@ -3,9 +3,10 @@ import Navigation from './navigation'
 import rent from '../css/rentList.module.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useAuth0 } from '@auth0/auth0-react'
 const RentList = () => {
     const [rentData, setData] = useState([])
-
+    const {isauthenticated,user} = useAuth0()
     useEffect(() => {
         axios.get('http://localhost:7000/rent/data')
             .then(res => {
@@ -14,8 +15,8 @@ const RentList = () => {
                 console.log(err)
             })
     }, [])
-    console.log(rentData)
-
+    // console.log(rentData)
+    console.log(user)
     return (
         <div className={rent.main}>
             <Navigation />

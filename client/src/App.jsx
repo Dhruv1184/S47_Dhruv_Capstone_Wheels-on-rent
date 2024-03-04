@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router'
-
 // import Navigation from './component/navigation'
 import RentList from './component/rentList'
 import Landing from './component/landing'
