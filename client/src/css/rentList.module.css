@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicleImg{
+    size: 100% 100%;
+    height: 35vh;
+    width: 30vw;
+    border-radius: 2vh;
+}
+
+.box{
+    border: 1px solid black;
+    display: flex;
+    width: 55vw;
+    align-items: center;
+    margin: 8vh;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    text-align:center;
+}
+.info{
+    margin: 0 auto
+}

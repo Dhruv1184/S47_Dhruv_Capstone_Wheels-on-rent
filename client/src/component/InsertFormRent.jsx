@@ -2,19 +2,6 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import form from '../css/form.module.css'
-// const InsertFormRent = () => {
-// const { register, handleSubmit, formState: { errors } } = useForm()
-
-// const onSubmit = (data) => {
-//   console.log(data)
-//   // e.preventDefault()
-//   axios.post("http://localhost:7000/rent/insert",data)
-//   .then((res)=>{
-//     console.log("Data inserted successfully")
-//     console.log(res.data.message)
-//   }).catch((err)=>console.log(err))
-// }
-// console.log(errors)
 
 const InsertFormRent = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
