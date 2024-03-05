@@ -4,11 +4,11 @@ import rent from '../css/rentList.module.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useAuth0 } from '@auth0/auth0-react'
-const RentList = () => {
+const SaleList = () => {
     const [rentData, setData] = useState([])
     const { isAuthenticated, user } = useAuth0()
     useEffect(() => {
-        axios.get('http://localhost:7000/rent/data')
+        axios.get('http://localhost:7000/sale/data')
             .then(res => {
                 setData(res.data)
             }).catch(err => {
@@ -27,7 +27,7 @@ const RentList = () => {
                         <span >Welcome </span> 
                         <span className={rent.usname}> {user.name}</span>
                     </div>}
-                    <h1 className={rent.heading}>Choose a vehicle for rent</h1>
+                    <h1 className={rent.heading}>Choose a vehicle for buy</h1>
                     <div className={rent.container}>
                         {rentData.map((data) => {
                             return (
@@ -58,4 +58,4 @@ const RentList = () => {
     )
 }
 
-export default RentList
+export default SaleList
