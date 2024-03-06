@@ -109,8 +109,8 @@
 .userName{
     display: flex;
     align-self: flex-end;
-    align-items: center;
-    justify-content: space-between;
+    align-items: baseline;
+    justify-content: center;
     margin: 1vh 2vw 0 0;
     font-size: 3vh;
 }

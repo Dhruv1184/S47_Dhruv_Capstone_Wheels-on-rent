@@ -6,7 +6,7 @@
 .main{
     background: url("../assets/landingPage.jpg");
     background-size: 100% 100%;
-    height: 100vh;
+    height: 90vh;
     color: white;
 }
 
@@ -55,7 +55,8 @@
 .heading{
     text-align: center;
     font-size: 10vh;
-    padding-top: 35vh;
+    padding-top: 10vh;
+    font-family:'Times New Roman', Times, serif;
 }
 
 .btns{

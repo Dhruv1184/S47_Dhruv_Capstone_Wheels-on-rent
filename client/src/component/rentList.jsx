@@ -24,8 +24,8 @@ const RentList = () => {
                 <div className={rent.body}>
                     {user.name && 
                     <div className={rent.userName}>
-                        <span >Welcome </span> 
-                        <span className={rent.usname}> {user.name}</span>
+                        <span >Welcome... </span> 
+                        <span className={rent.usname}> {user.nickname}</span>
                     </div>}
                     <h1 className={rent.heading}>Choose a vehicle for rent</h1>
                     <div className={rent.container}>
