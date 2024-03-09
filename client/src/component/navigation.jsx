@@ -34,7 +34,7 @@ const Navigation = () => {
     const rightArrow = () => applyRightArrow(upperLine, middleLine, lowerLine);
 
     if (slider) {
-      bar.style.left = '15vw';
+      bar.style.left = '17vw';
       btn.style.position = 'fixed';
       btn.style.left = '0vw';
       bar.addEventListener('mouseover', leftArrow);
@@ -43,10 +43,10 @@ const Navigation = () => {
       bar.addEventListener('mouseover', rightArrow);
       bar.style.left = '0vw';
       bar.addEventListener('mouseout', normal);
-      btn.style.left = '-15vw';
+      btn.style.left = '-17vw';
     }
 
-  }, [slider]);
+  });
 
   return (
     <div>
