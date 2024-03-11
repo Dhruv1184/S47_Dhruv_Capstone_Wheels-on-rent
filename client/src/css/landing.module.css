@@ -21,6 +21,12 @@
     box-shadow: 2px 2px 2vh inset;
     cursor:context-menu;
 }
+.loginBtn:hover{
+    box-shadow: 2px 2px 2vh #03254c;
+}
+.signupBtn:hover{
+    box-shadow: 2px 2px 2vh #03254c;
+}
 .header{
     display: flex;
     justify-content: space-between;
@@ -51,4 +57,39 @@
     display: flex;
     justify-content: space-between;
     width: 22vw;
+}
+.brandHeading{
+    text-align: center;
+    font-size: 7vh;
+    color: #03254c;
+    text-shadow: 2px 2px 2vh #03254c;
+    margin: 3vh;
+}
+.box{
+    text-align: center;
+    border: 1px solid #03254c;
+    width: 15vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 1vh 1vw;
+    cursor: pointer;
+}
+.box:hover{
+    box-shadow: 2px 2px 2vh #03254c;
+}
+.brands{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.brandLogo{
+    size: 100% 100%;
+    height: 20vh;
+}
+.brandName{
+    color: #03254c;
+    font-size: 4vh;
 }

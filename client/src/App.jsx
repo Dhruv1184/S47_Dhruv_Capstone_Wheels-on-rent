@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router'
 
 // import Navigation from './component/navigation'
 import RentList from './component/rentList'
-// import Landing from './component/landing'
+import Landing from './component/landing'
 import InsertFormRent from './component/InsertFormRent'
 // import InsertFormSale from './component/InsertFormSale'
 import './App.css'
@@ -13,6 +13,8 @@ function App() {
     <Routes>
       <Route path='/rent' element={<RentList/>}/>
       <Route path='/rentForm' element={<InsertFormRent />}></Route>
+      {/* <Route path='/saleForm' element={<InsertFormSale />}></Route> */}
+      <Route path='/' element={<Landing />}></Route>
     </Routes>
   
     </>

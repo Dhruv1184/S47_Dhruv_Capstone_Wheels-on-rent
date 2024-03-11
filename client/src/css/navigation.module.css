@@ -5,7 +5,7 @@
 .upperLine,.middleLine,.lowerLine {
     width: 40px;
     height: 5px;
-    background-color: #0a0808;
+    background-color: #03254c;
     margin: 0 2vw;
     transition: 0.5s ease-in-out;
     border-radius: 100vh 100vh 100vh 100vh;
@@ -16,11 +16,14 @@
 .slider{
     display: flex;
     background-color:#d0efff;
+    height: 12vh;
+    align-items: center;
 }
 .heading{
     text-align: center;
     margin-left: 40%;
     font-size: 8vh;
+    color: #03254c;
 }
 
 .bar{
@@ -38,21 +41,21 @@
 }
 
 .bar:hover .upperLine{
-    /* transform : rotate(50deg); */
+    box-shadow: 2px 2px 1vh #03254c;
     border-radius: 10px;
     width: 35px;
 }
 
 .bar:hover .middleLine{
+    box-shadow: 2px 2px 1vh #03254c;
     border-radius: 100vh;
-    /* margin-right: 10px; */
     width: 35px;
 }
 
 .bar:hover .lowerLine{
-    /* transform : rotate(-50deg); */
     border-radius: 10px;
-    width: 35px;
+    box-shadow: 2px 2px 1vh #03254c;
+    width: 30px;
 }
 
 .btns{
@@ -81,9 +84,44 @@
 .option{
     font-size: 5vh;
     color: #2a9df4;
+    /* border: 2px solid #2a9df4; */
+    width: 14vw;
+    text-align: center;
 }
+/* .option:hover{
+    box-shadow: 2px 2px 2px #2a9df4;
+} */
 .option:hover{
     color: #03254c;
     cursor: pointer;
     text-shadow: 2px 2px 2px #2a9df4;
+}
+.logoutbtn{
+    display: flex;
+    align-items: center;
+    font-size: 4vh;
+    color: #2a9df4;
+    width: 14vw;
+    text-align: center;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
+.logoutbtn:hover{
+    color: #03254c;
+    text-shadow: 2px 2px 2px #2a9df4;
+}
+
+.profile{
+    border: 1px solid #2a9df4;
+    width: 10vw;
+    height: 10vh;
+    border-radius: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin:0 auto 3vh;
+    cursor: pointer;
+}
+.profile:hover{
+    box-shadow: 2px 2px 2vh #03254c;
 }

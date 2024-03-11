@@ -20,8 +20,8 @@ const RentList = () => {
         <div className={rent.main}>
             <Navigation />
             <div className={rent.body}>
-                <h1>Rent List</h1>
-                <div>
+                <h1 className={rent.heading}>Choose a vehicle for rent</h1>
+                <div className={rent.container}>
                     {rentData.map((data) => {
                         return (
                             <div key={data._id} className={rent.box}>
@@ -31,13 +31,13 @@ const RentList = () => {
                                         )}
                                 </div>
                                 <div className={rent.info}>
-                                    <h3>Vehicle no. : <span>{data.registration}</span></h3>
-                                    <h1>Price/hr : Rs <span>{data.price}</span></h1>
-                                    <h3>Vehicle company : <span>{data.vehicle}</span></h3>
-                                    <h3>Model : <span>{data.model}</span></h3>
-                                    <h3>Available at: <span>{data.address}</span></h3>
-                                    <h3>Contact no. : <span>{data.contact}</span></h3>
-                                    <button>Book now</button>
+                                    <h3 className={rent.key}>Vehicle no. : <span className={rent.value}>{data.registration}</span></h3>
+                                    <h1 className={rent.key}>Price/hr : Rs <span className={rent.value}>{data.price}</span></h1>
+                                    <h3 className={rent.key}>Vehicle company : <span className={rent.value}>{data.vehicle}</span></h3>
+                                    <h3 className={rent.key}>Model : <span className={rent.value}>{data.model}</span></h3>
+                                    <h3 className={rent.key}>Available at: <span className={rent.value}>{data.address}</span></h3>
+                                    <h3 className={rent.key}>Contact no. : <span className={rent.value}>{data.contact}</span></h3>
+                                    <button className={rent.bookbtn}>Book now</button>
                                 </div>
                             </div>
                         )

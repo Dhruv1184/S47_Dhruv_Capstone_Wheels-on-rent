@@ -8,7 +8,7 @@ const Navigation = () => {
   const upperLine = document.getElementsByClassName(style.upperLine)[0];
   const middleLine = document.getElementsByClassName(style.middleLine)[0];
   const lowerLine = document.getElementsByClassName(style.lowerLine)[0];
-  const bar2 = document.getElementsByClassName(style.bar)[0];
+  // const bar2 = document.getElementsByClassName(style.bar)[0];
 
   const toggleSlider = () => {
     setSlider(!slider);
@@ -18,27 +18,23 @@ const Navigation = () => {
     const bar = document.getElementsByClassName(style.bar)[0];
     const btn = document.getElementsByClassName(style.btns)[0];
 
-    if (slider) {
-      bar.style.left = '15vw';
-      btn.style.left = '0vw';
-    } else {
-      bar.style.left = '0vw';
-      btn.style.left = '-15vw';
-    }
-  }, [slider]);
-
-  useEffect(() => {
     const normal = () => applyNormal(upperLine, middleLine, lowerLine);
     const leftArrow = () => applyLeftArrow(upperLine, middleLine, lowerLine);
     const rightArrow = () => applyRightArrow(upperLine, middleLine, lowerLine);
+
     if (slider) {
-      bar2.addEventListener('mouseover', leftArrow);
-      bar2.addEventListener('mouseout', normal);
+      bar.style.left = '15vw';
+      btn.style.position = 'fixed';
+      btn.style.left = '0vw';
+      bar.addEventListener('mouseover', leftArrow);
+      bar.addEventListener('mouseout', normal);
+    } else {
+      bar.addEventListener('mouseover', rightArrow);
+      bar.style.left = '0vw';
+      bar.addEventListener('mouseout', normal);
+      btn.style.left = '-15vw';
     }
-    // else{
-    //   bar2.addEventListener('mouseover', rightArrow);
-    //   bar2.addEventListener('mouseout', normal);
-    // }
+
   }, [slider]);
 
   return (
@@ -57,7 +53,26 @@ const Navigation = () => {
             <h2 className={style.option}>On Rent</h2>
             <h2 className={style.option}>On Sale</h2>
           </div>
-          <h2>Logout</h2>
+          <div>
+          <div className={style.profile}>
+            <lord-icon
+              src="https://cdn.lordicon.com/bgebyztw.json"
+              trigger="hover"
+              style={{width:"60px",height:"60px",}}>
+            </lord-icon>
+          </div>
+          <div className={style.logoutbtn} >
+            <lord-icon
+              src="https://cdn.lordicon.com/gwvmctbb.json"
+              trigger="hover"
+              stroke="light"
+              className={style.logoutLogo}
+              style={{width:'50px',height:"50px",transform:"rotateY(180deg)"}}
+              >
+            </lord-icon> 
+          <h2 >Logout</h2>
+          </div>
+        </div>
         </div>
       </div>
     </div>
