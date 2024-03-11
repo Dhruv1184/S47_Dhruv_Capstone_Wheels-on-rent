@@ -7,8 +7,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 const RentList = () => {
     const [rentData, setData] = useState([])
     const { isAuthenticated, user } = useAuth0()
-  const [profileData, setProfileData] = useState(null);
-  const [isDataFetched, setIsDataFetched] = useState(false);
+    const [profileData, setProfileData] = useState(null);
+    const [isProfilePosted, setIsProfilePosted] = useState(false);
+
     useEffect(() => {
         axios.get('http://localhost:7000/rent/data')
             .then(res => {
@@ -16,46 +17,71 @@ const RentList = () => {
             }).catch(err => {
                 console.log(err)
             })
-            const fetchProfileData = async () => {
-                try {
-                  const res = await axios.get('http://localhost:7000/user');
-                  const profile = res.data.find(profile => profile.email === user.email);
-                  if (profile) {
-                    setProfileData(profile);
-                  } else {
-                    await axios.post('http://localhost:7000/user/insert', {
-                      email: user.email,
-                      name: user.name,
-                      img: user.picture,
-                      contact: "",
-                      address: "",
-                      pincode: ""
-                    });
-                    setProfileData({ email: user.email, name: user.name, img: user.picture })
-                  }
-                  setIsDataFetched(true);
-                  console.log(profileData)
-                } catch (error) {
-                  console.log(error);
-                }
-              };
-          
-              if (isAuthenticated && user.email && user.name && !profileData) {
-                fetchProfileData();
-              }
-    }, [])
-    console.log(isAuthenticated)
-    console.log(user)
+            // const fetchProfileData = async () => {
+            //     try {
+            //         const res = await axios.get('http://localhost:7000/user');
+            //         const profile = res.data.find(profile => profile.email === user.email);
+            //         if (profile) {
+            //             setProfileData(profile);
+            //         } else {
+            //             await axios.post('http://localhost:7000/user/insert', {
+            //                 email: user.email,
+            //                 name: user.name,
+            //                 img: user.picture,
+            //                 contact: "",
+            //                 address: "",
+            //                 pincode: ""
+            //             });
+            //             setProfileData({ email: user.email, name: user.name, img: user.picture });
+            //             setIsProfilePosted(true); 
+            //             console.log("Profile posted successfully");
+            //         }
+            //     } catch (error) {
+            //         console.log(error);
+            //     }
+            // };
+    
+            // if (isAuthenticated && user.email && user.name && !profileData && !isProfilePosted) {
+            //     fetchProfileData();
+            // }
+    }, []); 
+    const fetchProfileData = async () => {
+        try {
+            const res = await axios.get('http://localhost:7000/user');
+            const profile = res.data.find(profile => profile.email === user.email);
+            if (profile) {
+                setProfileData(profile);
+            } else {
+                await axios.post('http://localhost:7000/user/insert', {
+                    email: user.email,
+                    name: user.name,
+                    img: user.picture,
+                    contact: "",
+                    address: "",
+                    pincode: ""
+                });
+                setProfileData({ email: user.email, name: user.name, img: user.picture });
+                setIsProfilePosted(true); 
+                console.log("Profile posted successfully");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    if (isAuthenticated && user.email && user.name && !profileData && !isProfilePosted) {
+        fetchProfileData();
+    }
     return (
         <div className={rent.main}>
             <Navigation />
             {isAuthenticated ?
                 <div className={rent.body}>
-                    {user.name && 
-                    <div className={rent.userName}>
-                        <span >Welcome... </span> 
-                        <span className={rent.usname}> {user.nickname}</span>
-                    </div>}
+                    {user.name &&
+                        <div className={rent.userName}>
+                            <span >Welcome... </span>
+                            <span className={rent.usname}> {user.nickname}</span>
+                        </div>}
                     <h1 className={rent.heading}>Choose a vehicle for rent</h1>
                     <div className={rent.container}>
                         {rentData.map((data) => {

@@ -61,8 +61,8 @@ const Navigation = () => {
       <div>
         <div className={style.btns}>
           <div className={style.opt}>
-            <h2 className={style.option} onClick={rentBtn}>On Rent</h2>
-            <h2 className={style.option} onClick={saleBtn}>On Buy</h2>
+            <h2 className={style.option} onClick={rentBtn}>For rent</h2>
+            <h2 className={style.option} onClick={saleBtn}>For buy</h2>
           </div>
           <div>
           <div className={style.profile} onClick={profileBtn}>
