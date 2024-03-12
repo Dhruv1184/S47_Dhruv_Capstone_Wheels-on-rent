@@ -85,6 +85,7 @@
 }
 .box:hover{
     box-shadow: 2px 2px 2vh #03254c;
+    transition: 0.1s ease-in-out;
 }
 .brands{
     display: flex;

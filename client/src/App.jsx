@@ -7,6 +7,8 @@ import InsertFormRent from './component/InsertFormRent'
 import Profile from './component/profile'
 import UpdateProfile from './component/updateProfile'
 import InsertFormSale from './component/InsertFormSale'
+import Login from './component/login'
+import SignUp from './component/signUp'
 import './App.css'
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
       <Route path='/profile' element={<Profile />}></Route>
       <Route path='/updateProfile/:id' element={<UpdateProfile/>} ></Route>
       <Route path='/saleForm' element={<InsertFormSale />}></Route>
+      <Route path='/login' element={<Login />}></Route>
+      <Route path='/signup' element={<SignUp />}></Route>
       <Route path='/' element={<Landing />}></Route>
     </Routes>
   
