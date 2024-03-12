@@ -4,6 +4,7 @@ import SaleList from './component/saleList'
 import RentList from './component/rentList'
 import Landing from './component/landing'
 import InsertFormRent from './component/InsertFormRent'
+import Profile from './component/profile'
 // import InsertFormSale from './component/InsertFormSale'
 import './App.css'
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Route path='/rent' element={<RentList/>}/>
       <Route path='/rentForm' element={<InsertFormRent />}></Route>
       <Route path='/sale' element={<SaleList />}></Route>
+      <Route path='/profile' element={<Profile />}></Route>
       {/* <Route path='/saleForm' element={<InsertFormSale />}></Route> */}
       <Route path='/' element={<Landing />}></Route>
     </Routes>

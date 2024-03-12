@@ -10,10 +10,9 @@ const Schema = new mongoose.Schema({
     address: String,
     pincode: String,
     contact: String,
-    vehicleImg: [{type: String}],//img
-    ownerImg: [{type: String}],//img
-    // vehicleNo: String
-    // vehicleType: String,//4 wheelers, 2 wheelers
+    email: String,
+    vehicleImg: [{type: String}],
+    ownerImg: [{type: String}]
 })
 
 const rentModel = mongoose.model("rent", Schema)
