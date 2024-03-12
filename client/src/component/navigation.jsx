@@ -1,15 +1,22 @@
-
 import React, { useState, useEffect } from 'react';
 import style from '../css/navigation.module.css';
 import { applyNormal, applyLeftArrow, applyRightArrow } from '../jsFile/navigation.js';
-
+import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router';
 const Navigation = () => {
+  const navigate = useNavigate();
+  const {logout} = useAuth0()
   const [slider, setSlider] = useState(false);
   const upperLine = document.getElementsByClassName(style.upperLine)[0];
   const middleLine = document.getElementsByClassName(style.middleLine)[0];
   const lowerLine = document.getElementsByClassName(style.lowerLine)[0];
   // const bar2 = document.getElementsByClassName(style.bar)[0];
-
+  const rentBtn = ()=>{
+    navigate('/rent')
+  }
+  const saleBtn = ()=>{
+    navigate('/sale')
+  }
   const toggleSlider = () => {
     setSlider(!slider);
   };
@@ -50,8 +57,8 @@ const Navigation = () => {
       <div>
         <div className={style.btns}>
           <div className={style.opt}>
-            <h2 className={style.option}>On Rent</h2>
-            <h2 className={style.option}>On Sale</h2>
+            <h2 className={style.option} onClick={rentBtn}>On Rent</h2>
+            <h2 className={style.option} onClick={saleBtn}>On Buy</h2>
           </div>
           <div>
           <div className={style.profile}>
@@ -70,7 +77,7 @@ const Navigation = () => {
               style={{width:'50px',height:"50px",transform:"rotateY(180deg)"}}
               >
             </lord-icon> 
-          <h2 >Logout</h2>
+          <h2 onClick={()=>logout()}>Logout</h2>
           </div>
         </div>
         </div>

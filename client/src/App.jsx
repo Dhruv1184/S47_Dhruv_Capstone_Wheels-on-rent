@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router'
-
 // import Navigation from './component/navigation'
+import SaleList from './component/saleList'
 import RentList from './component/rentList'
 import Landing from './component/landing'
 import InsertFormRent from './component/InsertFormRent'
@@ -13,6 +13,7 @@ function App() {
     <Routes>
       <Route path='/rent' element={<RentList/>}/>
       <Route path='/rentForm' element={<InsertFormRent />}></Route>
+      <Route path='/sale' element={<SaleList />}></Route>
       {/* <Route path='/saleForm' element={<InsertFormSale />}></Route> */}
       <Route path='/' element={<Landing />}></Route>
     </Routes>
