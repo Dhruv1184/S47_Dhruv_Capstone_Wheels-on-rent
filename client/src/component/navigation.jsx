@@ -17,6 +17,10 @@ const Navigation = () => {
   const saleBtn = ()=>{
     navigate('/sale')
   }
+
+  const profileBtn = ()=>{
+    navigate('/profile')
+  }
   const toggleSlider = () => {
     setSlider(!slider);
   };
@@ -61,14 +65,14 @@ const Navigation = () => {
             <h2 className={style.option} onClick={saleBtn}>On Buy</h2>
           </div>
           <div>
-          <div className={style.profile}>
+          <div className={style.profile} onClick={profileBtn}>
             <lord-icon
               src="https://cdn.lordicon.com/bgebyztw.json"
               trigger="hover"
               style={{width:"60px",height:"60px",}}>
             </lord-icon>
           </div>
-          <div className={style.logoutbtn} >
+          <div className={style.logoutbtn} onClick={()=>logout()}>
             <lord-icon
               src="https://cdn.lordicon.com/gwvmctbb.json"
               trigger="hover"
@@ -77,7 +81,7 @@ const Navigation = () => {
               style={{width:'50px',height:"50px",transform:"rotateY(180deg)"}}
               >
             </lord-icon> 
-          <h2 onClick={()=>logout()}>Logout</h2>
+          <h2 >Logout</h2>
           </div>
         </div>
         </div>
