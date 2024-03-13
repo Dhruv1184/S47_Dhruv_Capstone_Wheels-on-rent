@@ -108,9 +108,9 @@ const Profile = () => {
               <div className={profile.head}>
                 <h1 className={profile.heading}> History </h1>
                 <select className={profile.select} onChange={(e)=>DropDown(e)}>
-                  <option value="Add">Add</option>
-                  <option value="AddForRent">Add for rent</option>
-                  <option value="AddForSale">Add for sale</option>
+                  <option value="Add" className={profile.option}>Add</option>
+                  <option value="AddForRent" className={profile.option}>Add for rent</option>
+                  <option value="AddForSale" className={profile.option}>Add for sall</option>
                 </select>
               </div>
               <h1 className={profile.title}>For Rent:-</h1>

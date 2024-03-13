@@ -44,13 +44,11 @@ const SignUp = () => {
             <hr />
         </div>
         <div>
-            {/* <a href="https://dev-kypde41qyfc3vbdm.us.auth0.com/u/signup?state=hKFo2SBFNEZnbXpDRnJFNy1nb283NW5IZ1hlS2NaUU9wa0xCaqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIFMtX3NyMWR4cm9tUXFKNU42T2V2cHFiU1ZjT21tYVQ4o2NpZNkgS0w5MUJ5dFVPQ2JKT3B0VXVDa25KWUNjUmVUclFVWWg"> */}
             <button className={signup.signupWithGoogle}
             onClick={()=>loginWithRedirect({
                 authorizationParams: {
                    'screen_hint': 'signup',
                 }})} >SignUp with Google</button>
-            {/* </a> */}
         </div>
 
       </div>

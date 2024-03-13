@@ -1,19 +1,20 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
-import axios from 'axios'
-import form from '../css/form.module.css'
-import { useAuth0 } from '@auth0/auth0-react'
-import { useNavigate } from 'react-router'
-const InsertFormSale = () => {
-  const { user } = useAuth0();
+import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import form from '../css/form.module.css';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useNavigate } from 'react-router';
+const InsertForm = ({ formTitle, formUrl }) => {
+    const { user } = useAuth0();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
-    alert('Data inserted successfully')
-    navigate('/profile')
-    const formData = new FormData();
+    alert('Data inserted successfully');
+    navigate('/profile');
 
+    const formData = new FormData();
     formData.append('owner', data.owner);
     formData.append('registration', data.registration);
     formData.append('vehicle', data.vehicle);
@@ -26,9 +27,10 @@ const InsertFormSale = () => {
     formData.append('ownerImg', data.ownerImg[0]);
     formData.append('vehicleImg', data.vehicleImg[0]);
     formData.append('email', user.email);
+
     axios({
       method: 'post',
-      url: 'http://localhost:7000/sale/insert',
+      url: formUrl,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: formData
     }).then((res) => {
@@ -36,9 +38,10 @@ const InsertFormSale = () => {
     }).catch((err) => console.log(err));
   };
   return (
-    <div className={form.body}>
+    <div>
+       <div className={form.body}>
       <div className={form.box}>
-        <h1 className={form.heading}>Add vehicle for sell</h1>
+        <h1 className={form.heading}>{formTitle}</h1>
         <form onSubmit={handleSubmit(onSubmit)} method="post" encType="multipart/form-data">
           <div className={form.data}>
             <label htmlFor="owner">Owner Name:</label>
@@ -72,7 +75,7 @@ const InsertFormSale = () => {
           </div>
           {errors.year && <p className={form.error}>{errors.year.message}</p>}
           <div className={form.data}>
-            <label htmlFor="price">Price: </label>
+            <label htmlFor="price">Price/hr: </label>
             <input type="number" placeholder='Enter a price in Rs.' id='price' {...register("price", { required: "Price is required" })} />
           </div>
           {errors.price && <p className={form.error}>{errors.price.message}</p>}
@@ -109,16 +112,12 @@ const InsertFormSale = () => {
           </div>
           {errors.contact && <p className={form.error}>{errors.contact.message}</p>}
           <div className={form.data}>
-            {/* <label htmlFor="ownerImg">Owner Image: </label>
-        <input type="file" id='ownerImg' {...register("ownerImg", { required: "Owner Image is required" })} /> */}
             <label htmlFor="ownerImg">Owner Image: </label>
             <input type="file" id='ownerImg' {...register("ownerImg", { required: "Owner Image is required" })} />
 
           </div>
           {errors.ownerImg && <p className={form.error}>{errors.ownerImg.message}</p>}
           <div className={form.data}>
-            {/* <label htmlFor="vehicleImg">Vehicle Image: </label>
-        <input type="file"  id='vehicleImg'{...register("vehicleImg", { required: "Vehicle Image is required" })}/> */}
             <label htmlFor="vehicleImg">Vehicle Image: </label>
             <input type="file" id='vehicleImg' {...register("vehicleImg", { required: "Vehicle Image is required" })} />
           </div>
@@ -130,7 +129,9 @@ const InsertFormSale = () => {
         </form>
       </div>
     </div>
+
+    </div>
   )
 }
 
-export default InsertFormSale
+export default InsertForm
