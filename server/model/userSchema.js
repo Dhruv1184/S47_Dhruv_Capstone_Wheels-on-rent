@@ -6,7 +6,9 @@ const UserSchema = new mongoose.Schema({
     img: String,
     contact : String,
     address: String,
-    pincode: String
+    pincode: String,
+    token: String,
+    password: String
 })
 
 module.exports = mongoose.model('user', UserSchema)

@@ -1,29 +1,30 @@
 const mongoose = require('mongoose')
 const userSchema = require('../model/userSchema')
 const express = require('express');
-const { log } = require('console');
-const user = express()
+const bcrypt = require('bcryptjs')
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
 require("dotenv").config();
-
+const user = express()
 user.use(express.json())
-
+user.use(cookieParser())
 mongoose.connect(process.env.Mongoose_URL, {
-    dbName : "Capstone"
+    dbName: "Capstone"
 })
 
-user.get("/user", async (req, res)=>{
+user.get("/user", async (req, res) => {
     try {
-        userSchema.find({}).then((data)=>{
+        userSchema.find({}).then((data) => {
             res.send(data)
-        })  
+        })
     } catch (error) {
         console.log(error);
     }
 })
 
-user.post("/user/insert", async (req, res)=>{
+user.post("/user/insert", async (req, res) => {
     try {
-        const existData = await userSchema.findOne({email: req.body.email})
+        const existData = await userSchema.findOne({ email: req.body.email })
         // console.log(existData);
         if (!existData) {
             console.log("1+");
@@ -35,7 +36,7 @@ user.post("/user/insert", async (req, res)=>{
     }
 })
 
-user.get("/user/:id", async (req, res)=>{
+user.get("/user/:id", async (req, res) => {
     try {
         const id = req.params.id
         const user = await userSchema.findById(id)
@@ -46,12 +47,87 @@ user.get("/user/:id", async (req, res)=>{
         console.log(error);
     }
 })
-user.put("/user/update/:id", async (req, res)=>{
+user.put("/user/update/:id", async (req, res) => {
     try {
-        const updateUser = await userSchema.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        const updateUser = await userSchema.findByIdAndUpdate(req.params.id, req.body, { new: true })
         res.send(updateUser)
         // console.log("update");
     } catch (error) {
+        console.log(error);
+    }
+})
+
+user.post('/signup', async (req, res) => {
+    try {
+        const { name, email, password } = req.body
+        if (!(name && email && password)) {
+            res.status(400).send("All input is required")
+        }
+        const exist = await userSchema.findOne({ email })
+        if (exist) {
+            res.status(400).send("User Already Exist. Please Login")
+        }
+        else {
+
+
+            const hashedPassword = await bcrypt.hash(password, 10)
+            const user = await userSchema.create({
+                name,
+                email,
+                password: hashedPassword
+            })
+            const token = jwt.sign(
+                {
+                    id: user._id,
+                    email: user.email
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: "2h"
+                }
+            )
+            user.token = token
+            console.log(token);
+            user.password = undefined
+            res.status(201).json(user)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+user.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body
+        if (!(email && password)) {
+            res.status(400).send("All input is required")
+        }
+        const existUser = await userSchema.findOne({ email })
+        if (existUser && (await bcrypt.compare(password, existUser.password))) {
+            const token = jwt.sign(
+                {
+                    id: existUser._id,
+                    email: existUser.email
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: "2h"
+                }
+            )
+            existUser.token = token
+            existUser.password = undefined
+
+            const options = {
+                expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+                httpOnly: true
+            }
+            res.status(200).cookie("token", token, options).json({
+                success: true,
+                token,
+            })
+        }
+    }
+    catch (error) {
         console.log(error);
     }
 })
