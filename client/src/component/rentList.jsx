@@ -7,6 +7,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 const RentList = () => {
     const [rentData, setData] = useState([])
     const { isAuthenticated, user } = useAuth0()
+  const [profileData, setProfileData] = useState(null);
+  const [isDataFetched, setIsDataFetched] = useState(false);
     useEffect(() => {
         axios.get('http://localhost:7000/rent/data')
             .then(res => {
@@ -14,6 +16,33 @@ const RentList = () => {
             }).catch(err => {
                 console.log(err)
             })
+            const fetchProfileData = async () => {
+                try {
+                  const res = await axios.get('http://localhost:7000/user');
+                  const profile = res.data.find(profile => profile.email === user.email);
+                  if (profile) {
+                    setProfileData(profile);
+                  } else {
+                    await axios.post('http://localhost:7000/user/insert', {
+                      email: user.email,
+                      name: user.name,
+                      img: user.picture,
+                      contact: "",
+                      address: "",
+                      pincode: ""
+                    });
+                    setProfileData({ email: user.email, name: user.name, img: user.picture })
+                  }
+                  setIsDataFetched(true);
+                  console.log(profileData)
+                } catch (error) {
+                  console.log(error);
+                }
+              };
+          
+              if (isAuthenticated && user.email && user.name && !profileData) {
+                fetchProfileData();
+              }
     }, [])
     console.log(isAuthenticated)
     console.log(user)

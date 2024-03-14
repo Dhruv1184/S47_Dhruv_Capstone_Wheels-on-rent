@@ -5,7 +5,7 @@
 .upperLine,.middleLine,.lowerLine {
     width: 40px;
     height: 5px;
-    background-color: #03254c;
+    background-color: #d0efff;
     margin: 0 2vw;
     transition: 0.5s ease-in-out;
     border-radius: 100vh 100vh 100vh 100vh;
@@ -15,7 +15,7 @@
 }
 .slider{
     display: flex;
-    background-color:#d0efff;
+    background-color:#03254c;
     height: 12vh;
     align-items: center;
 }
@@ -23,7 +23,7 @@
     text-align: center;
     margin-left: 40%;
     font-size: 8vh;
-    color: #03254c;
+    color: #d0efff;
 }
 
 .bar{
@@ -41,28 +41,28 @@
 }
 
 .bar:hover .upperLine{
-    box-shadow: 2px 2px 1vh #03254c;
+    box-shadow: 2px 2px 1vh #d0efff;
     border-radius: 10px;
     width: 35px;
 }
 
 .bar:hover .middleLine{
-    box-shadow: 2px 2px 1vh #03254c;
+    box-shadow: 2px 2px 1vh #d0efff;
     border-radius: 100vh;
     width: 35px;
 }
 
 .bar:hover .lowerLine{
     border-radius: 10px;
-    box-shadow: 2px 2px 1vh #03254c;
+    box-shadow: 2px 2px 1vh #d0efff;
     width: 30px;
 }
 
 .btns{
     position: absolute;
-    width: 15vw;
+    width: 17vw;
     height: 100vh;
-    background-color: #d0efff;
+    background-color: #03254c;
     transition: 0.5s ease-in-out;
     left: -15vw;
     top: 0;
@@ -79,11 +79,11 @@
     justify-content: space-evenly;
     height: 20vh;
     margin-top: 2vh;
-    background-color:#d0efff;
+    background-color:#03254c;
 }
 .option{
-    font-size: 5vh;
-    color: #2a9df4;
+    font-size: 6vh;
+    color: #d0efff;
     /* border: 2px solid #2a9df4; */
     width: 14vw;
     text-align: center;
@@ -92,27 +92,32 @@
     box-shadow: 2px 2px 2px #2a9df4;
 } */
 .option:hover{
-    color: #03254c;
+    color: white;
     cursor: pointer;
-    text-shadow: 2px 2px 2px #2a9df4;
+    text-shadow: 1px 1px 2px white;
 }
 .logoutbtn{
     display: flex;
     align-items: center;
     font-size: 4vh;
-    color: #2a9df4;
+    color: #03254c;
+    background-color: #d0efff;
     width: 14vw;
     text-align: center;
     margin-bottom: 2vh;
     cursor: pointer;
+    border-radius: 5vh;
+    padding: 1vh;
 }
 .logoutbtn:hover{
+    background-color: white;
     color: #03254c;
-    text-shadow: 2px 2px 2px #2a9df4;
+    text-shadow: 1px 1px 2px #03254c;
 }
 
 .profile{
     border: 1px solid #2a9df4;
+    background-color: #d0efff ;
     width: 10vw;
     height: 10vh;
     border-radius: 100vh;
@@ -124,4 +129,5 @@
 }
 .profile:hover{
     box-shadow: 2px 2px 2vh #03254c;
+    background-color: white;
 }

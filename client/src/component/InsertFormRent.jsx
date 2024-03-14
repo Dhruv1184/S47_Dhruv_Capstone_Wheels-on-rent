@@ -2,10 +2,10 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import form from '../css/form.module.css'
-
+import { useAuth0 } from '@auth0/auth0-react'
 const InsertFormRent = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const { user } = useAuth0();
   const onSubmit = (data) => {
     console.log(data);
     alert('Data inserted successfully')
@@ -22,7 +22,7 @@ const InsertFormRent = () => {
     formData.append('contact', data.contact);
     formData.append('ownerImg', data.ownerImg[0]);
     formData.append('vehicleImg', data.vehicleImg[0]);
-
+    formData.append('email', user.email);
     axios({
       method: 'post',
       url: 'http://localhost:7000/rent/insert',

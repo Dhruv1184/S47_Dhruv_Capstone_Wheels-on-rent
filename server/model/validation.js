@@ -12,6 +12,7 @@ const schema = joi.object({
     address: joi.string().required(),
     pincode: joi.string().pattern(/^[0-9]{6}$/,"pincode").required(),
     contact: joi.string().length(10).required(),
+    email: joi.string().email().required(),
     ownerImg: joi.array().required(),
     vehicleImg: joi.array().required()
 })
