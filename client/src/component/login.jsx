@@ -3,17 +3,21 @@ import logo from '../assets/WebLogo-removebg-preview.png'
 import login from '../css/login.module.css'
 import { useAuth0 } from '@auth0/auth0-react'
 import RentList from './rentList'
-
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+  const navigate = useNavigate()
     const { loginWithRedirect, user, isAuthenticated, logout,isLoading } = useAuth0()
   
   if (isLoading) {
     return <div>Loading...</div>;
   }
+  if(isAuthenticated){
+    navigate('/rent')
+  }
   
   return (
     <div>
-    {isAuthenticated ? <RentList/>: 
+    {/* {isAuthenticated ? <RentList/>:  */}
     <div className={login.body}>
       <div className={login.main}>
         <h1 className={login.heading}>Login</h1>
@@ -46,7 +50,7 @@ const Login = () => {
 
       </div>
     </div>
-    }
+    {/* } */}
     </div>
   )
 }

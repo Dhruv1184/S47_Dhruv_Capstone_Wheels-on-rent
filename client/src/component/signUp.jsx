@@ -3,17 +3,19 @@ import logo from '../assets/WebLogo-removebg-preview.png'
 import signup from '../css/signup.module.css'
 import { useAuth0 } from '@auth0/auth0-react'
 import RentList from './rentList'
-
+import { useNavigate } from 'react-router-dom'
 const SignUp = () => {
     const { loginWithRedirect, isAuthenticated,isLoading } = useAuth0()
-  
+    const navigate = useNavigate()
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  
+  if(isAuthenticated){
+    navigate('/rent')
+  }
   return (
     <div>
-    {isAuthenticated ? <RentList/>: 
+    {/* {isAuthenticated ? <RentList/>:  */}
     <div className={signup.body}>
       <div className={signup.main}>
         <h1 className={signup.heading}>SignUp</h1>
@@ -53,7 +55,7 @@ const SignUp = () => {
 
       </div>
     </div>
-    }
+    {/* } */}
     </div>
   )
 }

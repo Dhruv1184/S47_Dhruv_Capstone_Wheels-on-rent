@@ -4,7 +4,9 @@ import rent from '../css/rentList.module.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
 const RentList = () => {
+    const navigate = useNavigate()
     const [rentData, setData] = useState([])
     const { isAuthenticated, user } = useAuth0()
     const [profilePosted, setProfilePosted] = useState(false);
@@ -58,7 +60,7 @@ const RentList = () => {
                                         <h3 className={rent.key}>Model : <span className={rent.value}>{data.model}</span></h3>
                                         <h3 className={rent.key}>Available at: <span className={rent.value}>{data.address}</span></h3>
                                         <h3 className={rent.key}>Contact no. : <span className={rent.value}>{data.contact}</span></h3>
-                                        <button className={rent.bookbtn}>Book now</button>
+                                        <button className={rent.bookbtn} onClick={() => navigate(`/book/${data._id}`)}>Book now</button>
                                     </div>
                                 </div>
                             )
