@@ -61,6 +61,7 @@
     box-shadow: 2px 2px 2vh inset;
     cursor: pointer;
     align-self: center;
+    margin: 2vh 0;
 }
 
 .bookbtn:hover {

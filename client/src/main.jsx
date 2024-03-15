@@ -8,11 +8,11 @@ import { BrowserRouter } from 'react-router-dom'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Auth0Provider
-        domain="dev-kypde41qyfc3vbdm.us.auth0.com"
-        clientId="KL91BytUOCbJOptUuCknJYCcReTrQUYh"
-        authorizationParams={{
-          redirect_uri: window.location.origin
-        }}>
+      domain="dev-kypde41qyfc3vbdm.us.auth0.com"
+      clientId="KL91BytUOCbJOptUuCknJYCcReTrQUYh"
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

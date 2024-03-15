@@ -99,3 +99,9 @@
     color: #03254c;
     font-size: 4vh;
 }
+.loading{
+    font-size: 7vh;
+    color: #03254c;
+    text-align: center;
+    margin-top: 40vh;
+}

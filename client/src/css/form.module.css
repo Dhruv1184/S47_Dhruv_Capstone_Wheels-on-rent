@@ -57,7 +57,8 @@ input{
     justify-content: space-evenly;
 }
 .error{
-    color: red;
+    color: rgb(252, 65, 65);
+    text-align: center;
 }
 
 label{
