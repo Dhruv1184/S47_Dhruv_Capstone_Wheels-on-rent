@@ -81,4 +81,13 @@ rent.put("/rent/:id",async (req, res) => {
     }
 })
 
+rent.delete("/rent/delete/:id",async (req, res) => {
+    try {
+        const id = req.params.id
+        await rentModel.findByIdAndDelete(id)
+        res.json({message: "Deleted Successfully"})
+    } catch (error) {
+        console.log(error)
+    }
+})
 module.exports = rent

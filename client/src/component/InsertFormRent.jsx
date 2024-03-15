@@ -3,12 +3,15 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import form from '../css/form.module.css'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router'
 const InsertFormRent = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { user } = useAuth0();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
     alert('Data inserted successfully')
+    navigate('/profile')
     const formData = new FormData();
 
     formData.append('owner', data.owner);

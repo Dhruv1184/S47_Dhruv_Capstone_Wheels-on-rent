@@ -87,5 +87,13 @@ sale.put("/sale/:id", async (req, res) => {
         res.status(500).json({message: error.message})
     }
 })
-
+sale.delete("/sale/delete/:id", async (req, res) => {
+    try {
+        const id = req.params.id
+        await saleModel.findByIdAndDelete(id)
+        res.json({message: "Deleted"})
+    } catch (error) {
+        console.log(error);
+    }
+})
 module.exports = sale
