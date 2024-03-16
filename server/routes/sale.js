@@ -30,6 +30,7 @@ sale.get("/ping", async (req, res)=>{
 sale.get("/sale/data", async (req, res) => {
     try {
         const data = await saleModel.find({})
+        // console.log("sale Data");
         res.json(data)
     } catch (error) {
         console.log(error);

@@ -23,6 +23,7 @@ rent.get("/ping",(req, res)=>{
 rent.get("/rent/data",async (req, res) => {
     try {
         const data = await rentModel.find({})
+        // console.log("rent Data");
         res.json(data)
     } catch (error) {
         console.log(error)

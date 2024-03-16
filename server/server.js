@@ -1,9 +1,7 @@
 const express = require("express");
-// const mongoose = require("mongoose");
 const app = express()
 const port = 7000;
 const cors = require("cors")
-// const Data = require("./Data.json");
 const rent = require("./routes/rent");
 const sale = require("./routes/sale");
 const user = require("./routes/user")

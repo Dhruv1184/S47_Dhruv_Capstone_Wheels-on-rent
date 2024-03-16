@@ -5,7 +5,7 @@
 .upperLine,.middleLine,.lowerLine {
     width: 40px;
     height: 5px;
-    background-color: #d0efff;
+    background-color: white;
     margin: 0 2vw;
     transition: 0.5s ease-in-out;
     border-radius: 100vh 100vh 100vh 100vh;
@@ -23,7 +23,8 @@
     text-align: center;
     margin-left: 40%;
     font-size: 6vh;
-    color: #d0efff;
+    /* color: #d0efff; */
+    color: white;
 }
 
 .bar{
@@ -82,19 +83,16 @@
     background-color:#03254c;
 }
 .option{
-    font-size: 4vh;
+    font-size: 5vh;
     color: #d0efff;
-    /* border: 2px solid #2a9df4; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 14vw;
     text-align: center;
 }
-/* .option:hover{
-    box-shadow: 2px 2px 2px #2a9df4;
-} */
 .option:hover{
-    color: white;
+    color:white;
     cursor: pointer;
-    text-shadow: 1px 1px 2px white;
+    text-shadow: 1px 1px 0.5px ;
 }
 .logoutbtn{
     display: flex;

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const userSchema = require('../model/userSchema')
-const express = require('express')
+const express = require('express');
+const { log } = require('console');
 const user = express()
 require("dotenv").config();
 
@@ -22,9 +23,12 @@ user.get("/user", async (req, res)=>{
 
 user.post("/user/insert", async (req, res)=>{
     try {
-        const newUser = new userSchema(req.body)
-        await newUser.save()
-        res.send(newUser)
+        const existData = await userSchema.findOne({email: req.body.email})
+        // console.log(existData);
+        if (!existData) {
+            console.log("1+");
+            await userSchema.create(req.body)
+        }
     }
     catch (error) {
         console.log(error);
@@ -36,6 +40,7 @@ user.get("/user/:id", async (req, res)=>{
         const id = req.params.id
         const user = await userSchema.findById(id)
         res.send(user)
+        // console.log("update");
     }
     catch (error) {
         console.log(error);
@@ -45,6 +50,7 @@ user.put("/user/update/:id", async (req, res)=>{
     try {
         const updateUser = await userSchema.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.send(updateUser)
+        // console.log("update");
     } catch (error) {
         console.log(error);
     }
