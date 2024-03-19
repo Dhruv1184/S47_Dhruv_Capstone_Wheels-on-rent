@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
 const user = express()
+const verifyToken = require("../middleware/jwt.middleware.js")
+const loginMiddleware = require("../middleware/login.middleware.js")
 user.use(express.json())
 user.use(cookieParser())
 mongoose.connect(process.env.Mongoose_URL, {
@@ -96,39 +98,47 @@ user.post('/signup', async (req, res) => {
     }
 })
 
-user.post('/login', async (req, res) => {
-    try {
-        const { email, password } = req.body
-        if (!(email && password)) {
-            res.status(400).send("All input is required")
-        }
-        const existUser = await userSchema.findOne({ email })
-        if (existUser && (await bcrypt.compare(password, existUser.password))) {
-            const token = jwt.sign(
-                {
-                    id: existUser._id,
-                    email: existUser.email
-                },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: "2h"
-                }
-            )
-            existUser.token = token
-            existUser.password = undefined
+user.post('/login',loginMiddleware,verifyToken)
 
-            const options = {
-                expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-                httpOnly: true
-            }
-            res.status(200).cookie("token", token, options).json({
-                success: true,
-                token,
-            })
-        }
-    }
-    catch (error) {
-        console.log(error);
-    }
-})
+// user.post('/login',verifyToken, async (req, res) => {
+//     console.log(req.body, req.headers)
+//     try {
+//         const { email, password } = req.body
+//         if (!(email && password)) {
+//             return res.status(400).send("All input is required")
+//         }
+//         const existUser = await userSchema.findOne({ email })
+//         if (existUser && (await bcrypt.compare(password, existUser.password))) {
+//             const token = jwt.sign(
+//                 {
+//                     id: existUser._id,
+//                     email: existUser.email
+//                 },
+//                 process.env.JWT_SECRET,
+//                 {
+//                     expiresIn: "2h"
+//                 }
+//             )
+//             existUser.token = token
+//             existUser.password = undefined
+
+//             const options = {
+//                 expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+//                 httpOnly: true
+//             }
+//             console.log("server",token);
+//             res.status(200).send(token)
+//             // .json({
+//             //     success: true,
+//             //     token,
+//             // })
+//         }
+//         else {
+//             res.status(400).send("Invalid Credentials")
+//         }
+//     }
+//     catch (error) {
+//         console.log(error);
+//     }
+// })
 module.exports = user

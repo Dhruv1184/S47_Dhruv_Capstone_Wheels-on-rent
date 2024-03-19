@@ -4,7 +4,7 @@ const {rentModel} = require("../model/schema");
 const  {validData} = require("../model/validation")
 const rent = express()
 const {upload} = require("../middleware/rentImage.middleware.js")
-
+const verifyToken = require("../middleware/jwt.middleware.js")
 require("dotenv").config();
 rent.use(express.json());
 
@@ -31,7 +31,7 @@ rent.get("/rent/data",async (req, res) => {
     }   
 })
 
-rent.post("/rent/insert",upload.fields([{name: "ownerImg", maxCount: 1},{name: "vehicleImg", maxCount: 1}]),async (req, res) => {
+rent.post("/rent/insert" ,upload.fields([{name: "ownerImg", maxCount: 1},{name: "vehicleImg", maxCount: 1}]),async (req, res) => {
     const newData = req.body
     // console.log(req.body);
     let ownerImg = []
