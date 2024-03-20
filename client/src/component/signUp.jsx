@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 const SignUp = () => {
-  const [signupData, setSignup] = useState({ name: '', email: '', password: '' })
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
     const { loginWithRedirect, isAuthenticated,isLoading } = useAuth0()
     const navigate = useNavigate()
@@ -24,7 +26,12 @@ const SignUp = () => {
     }
     else {
       console.log(signupData)
-      axios.post('http://localhost:7000/signup', signupData)
+      axios.post('http://localhost:7000/signup', { name, email, password }, {
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      })
         .then(res => {
           console.log(res)
           localStorage.setItem('token', res.data.token)
@@ -43,15 +50,15 @@ const SignUp = () => {
         <form>
             <div className={signup.inputbox}>
                 <label htmlFor="name">Name:</label>
-                <input type="text" required placeholder='Enter Name' id="name" onChange={(e) => setSignup({ ...signupData, name: e.target.value })} className={signup.input} />
+                <input type="text" required placeholder='Enter Name' id="name" onChange={(e) => setName(e.target.value)} className={signup.input} />
             </div>
             <div className={signup.inputbox}>
                 <label htmlFor="email">Email: </label>
-                <input type="email" required placeholder='Enter Email' id="email" onChange={(e) => setSignup({ ...signupData, email: e.target.value })} className={signup.input} />
+                <input type="email" required placeholder='Enter Email' id="email" onChange={(e) => setEmail(e.target.value)} className={signup.input} />
             </div>
             <div className={signup.inputbox}>
                 <label htmlFor="password">Password: </label>
-                <input type="password" required placeholder='Enter Password' id="password" onChange={(e) => setSignup({ ...signupData, password: e.target.value })} className={signup.input} />
+                <input type="password" required placeholder='Enter Password' id="password" onChange={(e) => setPassword(e.target.value )} className={signup.input} />
             </div>
             <div className={signup.inputbox}>
                 <label htmlFor="confirmPassword">Confirm Password: </label>

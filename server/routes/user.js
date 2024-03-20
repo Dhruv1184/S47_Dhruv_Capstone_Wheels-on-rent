@@ -70,8 +70,6 @@ user.post('/signup', async (req, res) => {
             res.status(400).send("User Already Exist. Please Login")
         }
         else {
-
-
             const hashedPassword = await bcrypt.hash(password, 10)
             const user = await userSchema.create({
                 name,
@@ -98,47 +96,38 @@ user.post('/signup', async (req, res) => {
     }
 })
 
-user.post('/login',loginMiddleware,verifyToken)
 
-// user.post('/login',verifyToken, async (req, res) => {
-//     console.log(req.body, req.headers)
-//     try {
-//         const { email, password } = req.body
-//         if (!(email && password)) {
-//             return res.status(400).send("All input is required")
-//         }
-//         const existUser = await userSchema.findOne({ email })
-//         if (existUser && (await bcrypt.compare(password, existUser.password))) {
-//             const token = jwt.sign(
-//                 {
-//                     id: existUser._id,
-//                     email: existUser.email
-//                 },
-//                 process.env.JWT_SECRET,
-//                 {
-//                     expiresIn: "2h"
-//                 }
-//             )
-//             existUser.token = token
-//             existUser.password = undefined
+user.post('/login', async (req, res) => {
+    // console.log(req.body, req.headers)
+    try {
+        const { email, password } = req.body
+        if (!(email && password)) {
+            return res.status(400).send("All input is required")
+        }
+        const existUser = await userSchema.findOne({ email })
+        if (existUser && (await bcrypt.compare(password, existUser.password))) {
+            const token = jwt.sign(
+                {
+                    id: existUser._id,
+                    email: existUser.email
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: "2h"
+                }
+            )
+            existUser.token = token
+            existUser.password = undefined
+            // console.log("server",token);
+            res.status(200).send(token)
+        }
+        else {
+            res.status(400).send("Invalid Credentials")
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+})
 
-//             const options = {
-//                 expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
-//                 httpOnly: true
-//             }
-//             console.log("server",token);
-//             res.status(200).send(token)
-//             // .json({
-//             //     success: true,
-//             //     token,
-//             // })
-//         }
-//         else {
-//             res.status(400).send("Invalid Credentials")
-//         }
-//     }
-//     catch (error) {
-//         console.log(error);
-//     }
-// })
 module.exports = user

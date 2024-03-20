@@ -9,7 +9,6 @@ const UpdateProfile = () => {
     const [data, setData] = useState([])
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
-    // const [img,setImg] = useState('')
     const [contact, setContact] = useState('')
     const [address, setAddress] = useState('')
     const [pincode, setPincode] = useState('')

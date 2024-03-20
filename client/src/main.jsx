@@ -12,7 +12,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       clientId="KL91BytUOCbJOptUuCknJYCcReTrQUYh"
       authorizationParams={{
         redirect_uri: window.location.origin
-      }}>
+      }}
+      audience="https://wheelsOnRent"
+      scope="openid profile email"
+      >
       <BrowserRouter>
         <App />
       </BrowserRouter>
