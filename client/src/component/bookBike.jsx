@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import book from '../css/book.module.css'
-const BookBike = () => {
+const BookBike = ({type}) => {
     const { id } = useParams()
     const [name, setName] = useState("")
     const [contact, setContact] = useState("")
@@ -14,7 +14,7 @@ const BookBike = () => {
     const [error, setError] = useState("")
 
     useEffect(()=>{
-        axios.get(`http://localhost:7000/rent/${id}`)
+        axios.get(`http://localhost:7000/${type}/${id}`)
         .then(res=>{
             setData(res.data)
         }).catch(err=>{
@@ -28,7 +28,7 @@ const BookBike = () => {
             setError("Please enter a valid contact number")
         }
         else{
-            const message = `Hi ${data.owner},I am ${name} I am interested in booking a bike on ${date.replace("T"," ")} and I will return on ${returnDate.replace("T"," ")}`
+            const message = `Hi ${data.owner},I am ${name} I am interested in booking a bike on ${date.replace("T"," ")} and I will return on ${returnDate.replace("T"," ")} I am staying at ${address} and my contact number is ${contact}`
             const encodedmesage = encodeURIComponent(message)
             const WhatsappUrl = `https://wa.me/91${data.contact}?text=${encodedmesage}`
             window.open(WhatsappUrl,'_blank')

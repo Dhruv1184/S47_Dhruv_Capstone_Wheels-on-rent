@@ -4,29 +4,42 @@ import rent from '../css/rentList.module.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
 const SaleList = () => {
+    const navigate = useNavigate()
     const [rentData, setData] = useState([])
-    const { isAuthenticated, user } = useAuth0()
+    const [error, setError] = useState("")
+    const { isAuthenticated, user, getAccessTokenSilently } = useAuth0()
     useEffect(() => {
-        axios.get('http://localhost:7000/sale/data')
-            .then(res => {
+        const getSaleData = async () => {
+            const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token')
+            console.log("ls", token);
+            if (token) {
+                const res = await axios.get('http://localhost:7000/sale/data', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
                 setData(res.data)
-            }).catch(err => {
-                console.log(err)
-            })
-    }, [])
+            }else{
+                setError("Please Login First")
+            }  
+        }
+        getSaleData()
+    },[])
     console.log(isAuthenticated)
     console.log(user)
     return (
         <div className={rent.main}>
             <Navigation />
-            {isAuthenticated ?
+            {error ? <h1>{error}</h1> :
                 <div className={rent.body}>
-                    {user.name && 
+                    {/* {user.name && 
                     <div className={rent.userName}>
                         <span >Welcome... </span> 
                         <span className={rent.usname}> {user.nickname}</span>
-                    </div>}
+                    </div>} */}
                     <h1 className={rent.heading}>Choose a vehicle for buy</h1>
                     <div className={rent.container}>
                         {rentData.map((data) => {
@@ -44,16 +57,17 @@ const SaleList = () => {
                                         <h3 className={rent.key}>Model : <span className={rent.value}>{data.model}</span></h3>
                                         <h3 className={rent.key}>Available at: <span className={rent.value}>{data.address}</span></h3>
                                         <h3 className={rent.key}>Contact no. : <span className={rent.value}>{data.contact}</span></h3>
-                                        <button className={rent.bookbtn}>Book now</button>
+                                        <button className={rent.bookbtn} onClick={() => navigate(`/bookForSale/${data._id}`)}>Book now</button>
                                     </div>
                                 </div>
                             )
                         })}
                     </div>
                 </div>
-                :
-                <p className={rent.error}>Please login</p>
-            }
+}
+                {/* :
+                <p className={rent.error}>Please login</p> */}
+            {/* } */}
         </div>
     )
 }

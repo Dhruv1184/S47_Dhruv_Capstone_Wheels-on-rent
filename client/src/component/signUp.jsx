@@ -21,11 +21,11 @@ const SignUp = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (signupData.password !== confirmPassword) {
+    if (password !== confirmPassword) {
       alert('Passwords do not match')
     }
     else {
-      console.log(signupData)
+      // console.log(signupData)
       axios.post('http://localhost:7000/signup', { name, email, password }, {
         headers: {
           "Content-Type": "application/json",

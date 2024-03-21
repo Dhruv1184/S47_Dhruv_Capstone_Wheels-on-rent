@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const {saleModel} = require("../model/schema");
 const {saleUpload} = require("../middleware/saleImage.middleware.js")
 const  {validData} = require("../model/validation")
+const verifyToken = require("../middleware/jwt.middleware.js");
 const sale = express()
 
 
@@ -27,7 +28,7 @@ sale.get("/ping", async (req, res)=>{
     }
 })
 
-sale.get("/sale/data", async (req, res) => {
+sale.get("/sale/data",verifyToken, async (req, res) => {
     try {
         const data = await saleModel.find({})
         // console.log("sale Data");

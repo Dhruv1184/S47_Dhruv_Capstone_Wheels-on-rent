@@ -5,7 +5,6 @@ const  {validData} = require("../model/validation")
 const rent = express()
 const {upload} = require("../middleware/rentImage.middleware.js")
 const verifyToken = require("../middleware/jwt.middleware.js");
-const { decode } = require("jsonwebtoken");
 require("dotenv").config();
 rent.use(express.json());
 
