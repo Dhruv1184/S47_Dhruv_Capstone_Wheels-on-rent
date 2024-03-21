@@ -17,32 +17,32 @@ const RentList = () => {
             }).catch(err => {
                 console.log(err)
             })
-        if(isAuthenticated){
-        axios.post('http://localhost:7000/user/insert', {
-                email: user.email,
-                name: user.name,
-                img: user.picture,
-                contact: "",
-                address: "",
-                pincode: ""
-            }).then(res => {
-                console.log(res)
-                setProfilePosted(true);
-            }).catch(err => {
-                console.log(err)
-            })
-        }
+        // if(isAuthenticated){
+        // axios.post('http://localhost:7000/user/insert', {
+        //         email: user.email,
+        //         name: user.name,
+        //         img: user.picture,
+        //         contact: "",
+        //         address: "",
+        //         pincode: ""
+        //     }).then(res => {
+        //         console.log(res)
+        //         setProfilePosted(true);
+        //     }).catch(err => {
+        //         console.log(err)
+        //     })
+        // }
     },[])
     return (
         <div className={rent.main}>
             <Navigation />
-            {isAuthenticated ?
+            {/* {isAuthenticated ? */}
                 <div className={rent.body}>
-                    {user.name &&
+                    {/* {user.name &&
                         <div className={rent.userName}>
                             <span >Welcome... </span>
                             <span className={rent.usname}> {user.nickname}</span>
-                        </div>}
+                        </div>} */}
                     <h1 className={rent.heading}>Choose a vehicle for rent</h1>
                     <div className={rent.container}>
                         {rentData.map((data) => {
@@ -67,9 +67,9 @@ const RentList = () => {
                         })}
                     </div>
                 </div>
-                :
+                {/* :
                 <p className={rent.error}>Please login</p>
-            }
+            } */}
         </div>
     )
 }

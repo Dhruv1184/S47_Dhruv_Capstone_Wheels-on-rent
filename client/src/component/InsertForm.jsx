@@ -39,7 +39,7 @@ const InsertForm = ({ formTitle, formUrl }) => {
   };
   return (
     <div>
-      {isAuthenticated ?
+      {/* {isAuthenticated ? */}
       <div className={form.body}>
         <div className={form.box}>
           <h1 className={form.heading}>{formTitle}</h1>
@@ -130,7 +130,7 @@ const InsertForm = ({ formTitle, formUrl }) => {
           </form>
         </div>
       </div>
-      : <p>Please login</p>}
+      {/* : <p>Please login</p>} */}
     </div>
   )
 }

@@ -12,10 +12,12 @@ const Landing = () => {
   if (isLoading) {
     return <div className={landing.loading}>Loading...</div>;
   }
-
+  if(isAuthenticated){
+    navigate('/rent')
+  }
   return (
     <div>
-      {isAuthenticated ? <RentList/> :
+      {/* {isAuthenticated ? <RentList/> : */}
         <div>
           <div className={landing.main}>
             <div className={landing.header}>
@@ -44,7 +46,7 @@ const Landing = () => {
             </div>
           </div>
         </div>
-     }
+     {/* } */}
     </div>
   )
 }
