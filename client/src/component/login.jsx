@@ -7,9 +7,10 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const Login = () => {
   const navigate = useNavigate()
-  const [loginData, setLogin] = useState({})
+  // const [loginData, setLogin] = useState({})
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const { loginWithRedirect, user, isAuthenticated, logout,isLoading } = useAuth0()
-  const [error, setError] = useState('')
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -20,8 +21,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-      console.log(loginData)
-      const response = await axios.post('http://localhost:7000/login', loginData,
+      // console.log(loginData)
+      const response = await axios.post('http://localhost:7000/login', {email, password},
         {headers: {
           "Content-Type":"application/json",
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -46,11 +47,11 @@ const Login = () => {
         <form>
             <div className={login.inputbox}>
                 <label htmlFor="email">Email: </label>
-                <input type="email" required placeholder='Enter Email' id="email" onChange={(e) => setLogin({email: e.target.value})} className={login.input} />
+                <input type="email" required placeholder='Enter Email' id="email" onChange={(e) => setEmail(e.target.value)} className={login.input} />
             </div>
             <div className={login.inputbox}>
                 <label htmlFor="password">Password: </label>
-                <input type="password" required placeholder='Enter Password' onChange={(e) => setLogin({ ...loginData, password: e.target.value })} id="password" className={login.input} />
+                <input type="password" required placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} id="password" className={login.input} />
             </div>
             <button type="submit" className={login.loginBtn} onClick={(e)=>handleSubmit(e)}>Login</button>
         </form>

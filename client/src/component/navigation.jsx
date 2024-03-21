@@ -48,6 +48,11 @@ const Navigation = () => {
 
   });
 
+  const logoutHandler = () => {
+    localStorage.removeItem('token')
+    window.location.reload()
+    navigate('/')
+  }
   return (
     <div>
       <div className={style.slider}>
@@ -81,7 +86,7 @@ const Navigation = () => {
               style={{width:'50px',height:"50px",transform:"rotateY(180deg)"}}
               >
             </lord-icon> 
-          <h2 >Logout</h2>
+          <h2 onClick={logoutHandler}>Logout</h2>
           </div>
         </div>
         </div>

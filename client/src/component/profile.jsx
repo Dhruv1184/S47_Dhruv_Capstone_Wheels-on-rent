@@ -68,7 +68,7 @@ const Profile = () => {
   return (
     <div>
       <Navigation />
-      {isAuthenticated ?
+      {/* {isAuthenticated ? */}
         <div >
           {profileData ?
             <div>
@@ -167,7 +167,7 @@ const Profile = () => {
 
             : <h1>'Please Login'</h1>}
         </div>
-        : <h1>'Please Login'</h1>}
+        {/* : <h1>'Please Login'</h1>} */}
     </div>
   )
 }

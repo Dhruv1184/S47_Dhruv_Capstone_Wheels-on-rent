@@ -4,7 +4,8 @@ const {rentModel} = require("../model/schema");
 const  {validData} = require("../model/validation")
 const rent = express()
 const {upload} = require("../middleware/rentImage.middleware.js")
-const verifyToken = require("../middleware/jwt.middleware.js")
+const verifyToken = require("../middleware/jwt.middleware.js");
+const { decode } = require("jsonwebtoken");
 require("dotenv").config();
 rent.use(express.json());
 
@@ -20,11 +21,12 @@ rent.get("/ping",(req, res)=>{
     res.send("Pong")
 })
 
-rent.get("/rent/data",async (req, res) => {
+rent.get("/rent/data",verifyToken,async (req, res) => {
     try {
         const data = await rentModel.find({})
         // console.log("rent Data");
-        res.json(data)
+        user = res.locals.user
+        res.json({"Data":data,"user":user})
     } catch (error) {
         console.log(error)
         res.status(500).json({message: error.message})

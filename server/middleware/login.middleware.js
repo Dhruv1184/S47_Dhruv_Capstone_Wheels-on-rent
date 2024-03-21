@@ -27,7 +27,6 @@ const loginMiddleware = async (req, res, next) => {
             )
             user.token = token
             user.password = undefined
-            res.status(200).json(token)
         }
         else {
             res.status(400).send("Invalid Credentials")

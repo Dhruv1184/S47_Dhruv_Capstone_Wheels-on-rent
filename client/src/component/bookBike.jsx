@@ -10,8 +10,6 @@ const BookBike = () => {
     const [address, setAddress] = useState("")
     const [returnDate, setReturn] = useState("")
     const [date, setDate] = useState("")
-    const [time, setTime] = useState("")
-    const [duration, setDuration] = useState("")
     const [data, setData] = useState([])
     const [error, setError] = useState("")
 
@@ -30,7 +28,7 @@ const BookBike = () => {
             setError("Please enter a valid contact number")
         }
         else{
-            const message = `Hi ${data.owner},I am ${name} I am interested in booking a bike on ${date} at ${time} and I will return on ${returnDate} at ${duration}`
+            const message = `Hi ${data.owner},I am ${name} I am interested in booking a bike on ${date.replace("T"," ")} and I will return on ${returnDate.replace("T"," ")}`
             const encodedmesage = encodeURIComponent(message)
             const WhatsappUrl = `https://wa.me/91${data.contact}?text=${encodedmesage}`
             window.open(WhatsappUrl,'_blank')
@@ -75,20 +73,20 @@ const BookBike = () => {
                     </div>
                     <div className={book.inputs}>
                         <label htmlFor="date">Date:- </label>
-                        <input type="date" id="date" required onChange={(e)=>setDate(e.target.value)} />
+                        <input type='datetime-local' id="date" required onChange={(e)=>setDate(e.target.value)} />
                     </div>
-                    <div className={book.inputs}>
+                    {/* <div className={book.inputs}>
                         <label htmlFor="time">Pickup time:- </label>
                         <input type="time" id="time" required onChange={(e)=>setTime(e.target.value)} />
-                    </div>
+                    </div> */}
                     <div>
                         <label htmlFor="return">Return date:-</label>
-                        <input type="date" id="return" required onChange={(e)=>setReturn(e.target.value)} />
+                        <input type="datetime-local" id="return" required onChange={(e)=>setReturn(e.target.value)} />
                     </div>
-                    <div className={book.inputs}>
+                    {/* <div className={book.inputs}>
                         <label htmlFor="duration">Return time:- </label>
                         <input type="time" id="duration" required onChange={(e)=>setDuration(e.target.value)} />
-                    </div>
+                    </div> */}
                     <button className={book.bookbtn} onClick={(e) => handleSubmit(e)}>Book</button>
                 </form>
             </div>
