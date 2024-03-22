@@ -47,11 +47,10 @@ const BookBike = ({type}) => {
                 <p>Owner name: <span className={book.detail}>{data.owner}</span> </p>
                 <p>Model: <span className={book.detail}>{data.model}</span> </p>
                 <p>Registration: <span className={book.detail}>{data.registration}</span> </p>
-                <p>Price: Rs. <span className={book.detail}>{data.price}</span> </p>
+                <p>Price:  <span className={book.detail}>Rs.{data.price}</span> </p>
                 <p>Vehicle company: <span className={book.detail}>{data.vehicle}</span> </p>
                 <p>Available at: <span className={book.detail}>{data.address}</span> </p>
                 <p>Contact no. : <span className={book.detail}>{data.contact}</span> </p>
-                {/* <button>Book Now</button> */}
             </div>
         </div>
         <div className={book.bookingDetail}>
@@ -75,18 +74,10 @@ const BookBike = ({type}) => {
                         <label htmlFor="date">Date:- </label>
                         <input type='datetime-local' id="date" required onChange={(e)=>setDate(e.target.value)} />
                     </div>
-                    {/* <div className={book.inputs}>
-                        <label htmlFor="time">Pickup time:- </label>
-                        <input type="time" id="time" required onChange={(e)=>setTime(e.target.value)} />
-                    </div> */}
                     <div>
                         <label htmlFor="return">Return date:-</label>
                         <input type="datetime-local" id="return" required onChange={(e)=>setReturn(e.target.value)} />
                     </div>
-                    {/* <div className={book.inputs}>
-                        <label htmlFor="duration">Return time:- </label>
-                        <input type="time" id="duration" required onChange={(e)=>setDuration(e.target.value)} />
-                    </div> */}
                     <button className={book.bookbtn} onClick={(e) => handleSubmit(e)}>Book</button>
                 </form>
             </div>

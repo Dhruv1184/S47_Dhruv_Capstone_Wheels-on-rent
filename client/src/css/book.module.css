@@ -12,24 +12,33 @@
     display: flex;
     flex-direction: column;
     width: max-content;
-    font-size: 4vh;
+    font-size: 3.5vh;
     padding: 2vh;
+    line-height: 6vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .detail{
+    margin: 1vh;
     font-weight: bold;
-    font-size: 5vh;
+    font-size: 4vh;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 .main{
+    background: url('../assets/booking.jpg');
+    background-size: 100% 100%;
+    height: 90vh;
+    width: 95vw;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin: 5vh;
+    padding: 5vh;
+
 
 }
 
 .bikeDetail{
+    border-radius: 1vh;
+    backdrop-filter: blur(20vh);
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -40,6 +49,8 @@
     text-align: center;
 }
 .bookingDetail{
+    backdrop-filter: blur(20vh);
+    /* color: white; */
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -48,25 +59,31 @@
     padding: 2vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     align-items: center;
+    border-radius: 1vh;
 }
 .inputs{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .form{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     row-gap: 3vh;
+    margin-top: 4vh;
 }
 .bookbtn{
     width: 10vw;
-    height: 5vh;
+    height: 6vh;
     font-size: 4vh;
-    margin: 2vh auto;
+    margin: 6vh auto;
     border-radius: 1vh;
     cursor: pointer;
+    background-color: #2a9df4;
+    color: white;
 }
+
 .error{
     color: red;
     font-size: 3vh;

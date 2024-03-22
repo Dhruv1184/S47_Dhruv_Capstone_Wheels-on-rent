@@ -4,11 +4,12 @@ import logo from '../assets/WebLogo.png'
 import { brand } from '../jsFile/brand'
 import { useNavigate } from 'react-router'
 import { useAuth0 } from '@auth0/auth0-react'
-import RentList from './rentList'
+import Footer from './footer'
+
 const Landing = () => {
   const navigate = useNavigate()
   const { isLoading,isAuthenticated } = useAuth0()
-  
+  console.log(brand);
   if (isLoading) {
     return <div className={landing.loading}>Loading...</div>;
   }
@@ -17,7 +18,6 @@ const Landing = () => {
   }
   return (
     <div>
-      {/* {isAuthenticated ? <RentList/> : */}
         <div>
           <div className={landing.main}>
             <div className={landing.header}>
@@ -46,7 +46,8 @@ const Landing = () => {
             </div>
           </div>
         </div>
-     {/* } */}
+     <br />
+     <Footer/>
     </div>
   )
 }
