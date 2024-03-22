@@ -10,6 +10,7 @@ const SaleList = () => {
     const [rentData, setData] = useState([])
     const [error, setError] = useState("")
     const { isAuthenticated, user, getAccessTokenSilently } = useAuth0()
+
     useEffect(() => {
         const getSaleData = async () => {
             const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token')
@@ -27,7 +28,7 @@ const SaleList = () => {
             }  
         }
         getSaleData()
-    },[])
+    },[isAuthenticated])
     console.log(isAuthenticated)
     console.log(user)
     return (

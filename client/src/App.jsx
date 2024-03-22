@@ -7,6 +7,7 @@ import UpdateProfile from './component/updateProfile'
 import Login from './component/login'
 import SignUp from './component/signUp'
 import BookBike from './component/bookBike'
+import Footer from './component/footer'
 import './App.css'
 import InsertForm from './component/InsertForm'
 function App() {
@@ -20,7 +21,7 @@ function App() {
       <Route path='/updateProfile/:id' element={<UpdateProfile/>} ></Route>
       <Route path='/login' element={<Login />}></Route>
       <Route path='/signup' element={<SignUp />}></Route>
-      {/* <Route path='/book/:id' element={<BookBike />}></Route> */}
+      <Route path='/footer' element={<Footer />}></Route>
       <Route path='/bookForRent/:id' element={<BookBike type={'rent'} />}></Route>
       <Route path='/bookForSale/:id' element={<BookBike type={'sale'} />}></Route>
       <Route path='/' element={<Landing />}></Route>

@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.footer{
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    color: white;
+}
+.logo{
+    size: 100% 100%;
+    height: 100px;
+}
+.logoDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1vh;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3vh;
+    line-height: 4vh;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.usname{
+    font-size: 3vh;
+    margin-left: 0.4vw;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5vh;
+}
+.icon{
+    margin: 2vh 0.5vw;
+}
