@@ -10,11 +10,12 @@ const Profile = () => {
   const { id } = useParams();
   const navigate = useNavigate()
   const [dropdown, setDropdown] = useState('Add')
-  const { user, isAuthenticated } = useAuth0()
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
   const [profileData, setProfileData] = useState(null);
   const [RentHistory, setHistory] = useState([]);
   const [sellHistory, setSellHistory] = useState([]);
-  // const [isDataFetched, setIsDataFetched] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [isDataFetched, setIsDataFetched] = useState(false);
   const DropDown=(e)=>{
     setDropdown(e.target.value)
     if(e.target.value==='AddForRent'){
@@ -27,13 +28,31 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
+        const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token');
         const res = await axios.get('http://localhost:7000/user');
-        const history = await axios.get('http://localhost:7000/rent/data');
-        const sellHistory = await axios.get('http://localhost:7000/sale/data');
-
-        const profile = res.data.find(profile => profile.email === user.email);
-        const historyData = history.data.filter(item => item.email === user.email);
-        const sellHistoryData = sellHistory.data.filter(item => item.email === user.email);
+        const history = await axios.get('http://localhost:7000/rent/data',{
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const sellHistory = await axios.get('http://localhost:7000/sale/data',{
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        console.log(history.data);
+        if(isAuthenticated){
+          setUserEmail(user.email);
+        }else{ 
+          setUserEmail(history.data.user.email);
+        }
+        setIsDataFetched(true);
+        console.log(userEmail);
+        const profile = res.data.find(profile => profile.email === userEmail);
+        const historyData = history.data.Data.filter(item => item.email === userEmail);
+        const sellHistoryData = sellHistory.data.filter(item => item.email === userEmail);
         setHistory(historyData);
         setSellHistory(sellHistoryData);
         setProfileData(profile)
@@ -42,10 +61,9 @@ const Profile = () => {
         console.log(error);
       }
     }
-    if (isAuthenticated) {
       fetchProfileData();
-    }
-  }, [isAuthenticated]);
+
+  }, [isDataFetched,isAuthenticated]);
 
   const deleteRentItem = async (id) => {
     try {
@@ -68,7 +86,6 @@ const Profile = () => {
   return (
     <div>
       <Navigation />
-      {/* {isAuthenticated ? */}
         <div >
           {profileData ?
             <div>
@@ -167,7 +184,6 @@ const Profile = () => {
 
             : <h1>'Please Login'</h1>}
         </div>
-        {/* : <h1>'Please Login'</h1>} */}
     </div>
   )
 }
