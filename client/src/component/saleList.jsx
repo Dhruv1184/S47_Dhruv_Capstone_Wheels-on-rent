@@ -19,7 +19,7 @@ const SaleList = () => {
             const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token')
             console.log("ls", token);
             if (token) {
-                const res = await axios.get('http://localhost:7000/sale/data', {
+                const res = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/sale/data`, {
                     headers: {
                         "Content-Type": "application/json",
                         'Authorization': `Bearer ${token}`
@@ -65,7 +65,7 @@ const SaleList = () => {
                                     <div key={data._id} className={rent.box}>
                                         <div>
                                             {data.vehicleImg.length > 0 && (
-                                                <img src={`http://localhost:7000/${data.vehicleImg[0].replace(/\\/g, '/')}`} alt="Vehicle Image" className={rent.vehicleImg} />
+                                                <img src={`${import.meta.env.VITE_SERVER_LINK}/${data.vehicleImg[0].replace(/\\/g, '/')}`} alt="Vehicle Image" className={rent.vehicleImg} />
                                             )}
                                         </div>
                                         <div className={rent.info}>

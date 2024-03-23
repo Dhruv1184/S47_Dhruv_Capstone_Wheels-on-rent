@@ -30,7 +30,7 @@ const SignUp = () => {
     }else if (!validatePassword(password)) {
       alert('Password must be at least 8 characters long and must contain at least one letter, one number, and one special character')
     }else {
-      axios.post('http://localhost:7000/signup', { name, email, password }, {
+      axios.post(`${import.meta.env.VITE_SERVER_LINK}/signup`, { name, email, password }, {
         headers: {
           "Content-Type": "application/json",
           'Authorization': `Bearer ${localStorage.getItem('token')}`

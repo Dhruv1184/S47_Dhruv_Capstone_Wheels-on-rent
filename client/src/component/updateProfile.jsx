@@ -13,7 +13,7 @@ const UpdateProfile = () => {
     const [address, setAddress] = useState('')
     const [pincode, setPincode] = useState('')
     useEffect(() => {
-        axios.get(`http://localhost:7000/user/${id}`)
+        axios.get(`${import.meta.env.VITE_SERVER_LINK}/user/${id}`)
             .then(res => {
                 setData(res.data)
                 setName(res.data.name)
@@ -29,7 +29,7 @@ const UpdateProfile = () => {
     console.log(data)
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:7000/user/update/${id}`, { name, contact, address, pincode })
+        axios.put(`${import.meta.env.VITE_SERVER_LINK}/user/update/${id}`, { name, contact, address, pincode })
             .then(res => {
                 console.log(res)
                 navigate('/profile')

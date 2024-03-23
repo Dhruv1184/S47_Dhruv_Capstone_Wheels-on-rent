@@ -14,7 +14,7 @@ const BookBike = ({type}) => {
     const [error, setError] = useState("")
 
     useEffect(()=>{
-        axios.get(`http://localhost:7000/${type}/${id}`)
+        axios.get(`${import.meta.env.VITE_SERVER_LINK}/${type}/${id}`)
         .then(res=>{
             setData(res.data)
         }).catch(err=>{
