@@ -10,7 +10,6 @@ const Navigation = () => {
   const upperLine = document.getElementsByClassName(style.upperLine)[0];
   const middleLine = document.getElementsByClassName(style.middleLine)[0];
   const lowerLine = document.getElementsByClassName(style.lowerLine)[0];
-  // const bar2 = document.getElementsByClassName(style.bar)[0];
   const rentBtn = ()=>{
     navigate('/rent')
   }
@@ -66,8 +65,8 @@ const Navigation = () => {
       <div>
         <div className={style.btns}>
           <div className={style.opt}>
-            <h2 className={style.option} onClick={rentBtn}>For rent</h2>
-            <h2 className={style.option} onClick={saleBtn}>For sell</h2>
+            <h2 className={style.option} onClick={rentBtn}>For Rent</h2>
+            <h2 className={style.option} onClick={saleBtn}>For Buy</h2>
           </div>
           <div>
           <div className={style.profile} onClick={profileBtn}>

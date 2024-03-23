@@ -115,3 +115,15 @@
     margin: 1vh 2vw 0 0;
     font-size: 3vh;
 }
+.error{
+    text-align: center;
+    font-size: 4vh;
+    color: #03254c;
+    margin-top: 10%;
+}
+.loading{
+    font-size: 7vh;
+    color: #03254c;
+    text-align: center;
+    margin-top: 40vh;
+}

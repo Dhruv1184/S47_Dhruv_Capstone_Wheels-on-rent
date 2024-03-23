@@ -74,7 +74,8 @@
 .box{
     text-align: center;
     border: 1px solid #03254c;
-    width: 15vw;
+    /* width: 15vw; */
+    width:200px;
     height: 35vh;
     display: flex;
     flex-direction: column;
@@ -90,7 +91,7 @@
 .brands{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .brandLogo{
     size: 100% 100%;

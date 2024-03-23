@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import logo from '../assets/WebLogo-removebg-preview.png'
 import login from '../css/login.module.css'
 import { useAuth0 } from '@auth0/auth0-react'
-import RentList from './rentList'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const Login = () => {
   const navigate = useNavigate()
-  // const [loginData, setLogin] = useState({})
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const { loginWithRedirect, user, isAuthenticated, logout,isLoading } = useAuth0()
@@ -21,7 +19,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-      // console.log(loginData)
       const response = await axios.post('http://localhost:7000/login', {email, password},
         {headers: {
           "Content-Type":"application/json",
@@ -32,6 +29,7 @@ const Login = () => {
       localStorage.setItem('token', response.data)
       navigate('/rent')
     } catch (error) {
+      alert("Invalid Credentials")
       console.log(error);
     }
 
@@ -39,7 +37,6 @@ const Login = () => {
   
   return (
     <div>
-    {/* {isAuthenticated ? <RentList/>:  */}
     <div className={login.body}>
       <div className={login.main}>
         <h1 className={login.heading}>Login</h1>
@@ -72,7 +69,6 @@ const Login = () => {
 
       </div>
     </div>
-     {/* }  */}
     </div>
   )
 }

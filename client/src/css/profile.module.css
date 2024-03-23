@@ -6,6 +6,7 @@
     border: 1px solid black;
     font-size: 4vh;
     background-color:#d0efff;
+    padding-top: 2vh;
 }
 .profileData{
     padding: 0 0 5vh 0;
@@ -137,4 +138,16 @@
     font-size: 6vh;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #03254c;
+}
+.error{
+    text-align: center;
+    font-size: 4vh;
+    color: #03254c;
+    margin-top: 10%;
+}
+.loading{
+    font-size: 7vh;
+    color: #03254c;
+    text-align: center;
+    margin-top: 40vh;
 }

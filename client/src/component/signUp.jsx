@@ -2,7 +2,6 @@ import React from 'react'
 import logo from '../assets/WebLogo-removebg-preview.png'
 import signup from '../css/signup.module.css'
 import { useAuth0 } from '@auth0/auth0-react'
-import RentList from './rentList'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
@@ -19,13 +18,18 @@ const SignUp = () => {
   if(isAuthenticated){
     navigate('/rent')
   }
+  const validatePassword = (password) => {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+    return regex.test(password)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
+    if (password !== confirmPassword ) {
       alert('Passwords do not match')
-    }
-    else {
-      // console.log(signupData)
+    }else if (!validatePassword(password)) {
+      alert('Password must be at least 8 characters long and must contain at least one letter, one number, and one special character')
+    }else {
       axios.post('http://localhost:7000/signup', { name, email, password }, {
         headers: {
           "Content-Type": "application/json",
@@ -42,7 +46,6 @@ const SignUp = () => {
   }
   return (
     <div>
-    {/* {isAuthenticated ? <RentList/>:  */}
     <div className={signup.body}>
       <div className={signup.main}>
         <h1 className={signup.heading}>SignUp</h1>
@@ -82,7 +85,6 @@ const SignUp = () => {
 
       </div>
     </div>
-    {/* } */}
     </div>
   )
 }

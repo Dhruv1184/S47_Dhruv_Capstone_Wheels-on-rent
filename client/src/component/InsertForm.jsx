@@ -4,7 +4,7 @@ import axios from 'axios';
 import form from '../css/form.module.css';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router';
-const InsertForm = ({ formTitle, formUrl }) => {
+const InsertForm = ({ formTitle, formUrl,cost }) => {
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const [error, setError] = useState("");
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -65,7 +65,15 @@ const InsertForm = ({ formTitle, formUrl }) => {
   };
   return (
     <div>
-      {error ? <h1>{error}</h1> :
+      {error ? <div className={form.error2}>
+            <h1 ><lord-icon
+                src="https://cdn.lordicon.com/usownftb.json"
+                trigger="hover"
+                colors="primary:#03254c,secondary:#66eece"
+                style={{ width: "200px", height: "200px" }}>
+            </lord-icon></h1>
+            <h1>{error}</h1>
+            </div>  :
         <div className={form.body}>
           <div className={form.box}>
             <h1 className={form.heading}>{formTitle}</h1>
@@ -102,7 +110,7 @@ const InsertForm = ({ formTitle, formUrl }) => {
               </div>
               {errors.year && <p className={form.error}>{errors.year.message}</p>}
               <div className={form.data}>
-                <label htmlFor="price">Price/hr: </label>
+                <label htmlFor="price">{cost}: </label>
                 <input type="number" placeholder='Enter a price in Rs.' id='price' {...register("price", { required: "Price is required" })} />
               </div>
               {errors.price && <p className={form.error}>{errors.price.message}</p>}
@@ -151,13 +159,12 @@ const InsertForm = ({ formTitle, formUrl }) => {
               {errors.vehicleImg && <p className={form.error}>{errors.vehicleImg.message}</p>}
               <div className={form.btn}>
                 <button type='submit' className={form.submit}  >Insert</button>
-                <button className={form.cancel}>Cancel</button>
+                <button className={form.cancel} onClick={navigate('/profile')}>Cancel</button>
               </div>
             </form>
           </div>
         </div>
       }
-      {/* : <p>Please login</p>} */}
     </div>
   )
 }

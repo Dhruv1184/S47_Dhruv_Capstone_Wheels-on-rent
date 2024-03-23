@@ -81,3 +81,9 @@ label{
 ::-webkit-scrollbar-thumb{
     background: linear-gradient(#0a0808, #03254c);
 } */
+.error2{
+    text-align: center;
+    font-size: 4vh;
+    color: #03254c;
+    margin-top: 10%;
+}

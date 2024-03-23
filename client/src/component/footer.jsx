@@ -18,7 +18,7 @@ const Footer = () => {
             <div className={footer.icons}>
                 <h1 className={footer.icon}><a href="https://www.linkedin.com/in/dhruv-khandelwal-76121a291/"><FontAwesomeIcon icon={faLinkedin} style={{color: "#e3e1ea"}} /></a></h1>
                 <h1 className={footer.icon}><a href="https://www.facebook.com/profile.php?id=100069932894124 "><FontAwesomeIcon icon={faFacebook} style={{color: "#e3e1ea",}} /></a></h1>
-                <h1 className={footer.icon}><a href="https://www.instagram.com/dhruvkhandelwal1184?utm_source=qr&igsh=MTN3aGs2am1paDU2Yw== "><FontAwesomeIcon icon={faInstagram} style={{color: "#e3e1ea",}} /></a></h1>
+                <h1 className={footer.icon}><a href="https://www.instagram.com/dhruvkhandelwal1184/?igsh=MTN3aGs2am1paDU2Yw%3D%3D"><FontAwesomeIcon icon={faInstagram} style={{color: "#e3e1ea",}} /></a></h1>
                 <h1 className={footer.icon}><a href="https://twitter.com/dkhandelwal1184?t=WdEvalcoRWvDvA-eRrom9A&s=09"><FontAwesomeIcon icon={faSquareXTwitter} style={{color: "#e3e1ea",}}  /></a></h1>
                 <h1 className={footer.icon}><a href="https://github.com/Dhruv1184"><FontAwesomeIcon icon={faGithub} style={{color: "#e3e1ea",}} /></a></h1>
             </div>
