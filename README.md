@@ -18,6 +18,6 @@ My Topic is Wheels-on-rent
 6. Deploy frontend.  
 
 Deployed link:- https://wheels-on-rent.netlify.app/
-Backend Deployed Link:- https://dashboard.render.com/web/srv-cnjfg4md3nmc73eabhq0/deploys/dep-cnjfg56d3nmc73eabhsg
+Backend Deployed Link:- https://s47-dhruv-capstone-wheels-on-rent-7.onrender.com
 
 
