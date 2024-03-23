@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-      const response = await axios.post('http://localhost:7000/login', {email, password},
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_LINK}/login`, {email, password},
         {headers: {
           "Content-Type":"application/json",
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

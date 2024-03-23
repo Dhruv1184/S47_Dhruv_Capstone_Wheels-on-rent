@@ -16,7 +16,7 @@ const InsertForm = ({ formTitle, formUrl,cost }) => {
       try {
         const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token');
         if (token) {
-          const res = await axios.get('http://localhost:7000/rent/data', {
+          const res = await axios.get(`${import.meta.env.VITE_BASE}/rent/data`, {
             headers: {
               "Content-Type": "application/json",
               'Authorization': `Bearer ${token}`

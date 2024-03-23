@@ -30,14 +30,14 @@ const Profile = () => {
     const fetchProfileData = async () => {
       try {
         const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token');
-        const res = await axios.get('http://localhost:7000/user');
-        const history = await axios.get('http://localhost:7000/rent/data', {
+        const res = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/user`);
+        const history = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/rent/data`, {
           headers: {
             "Content-Type": "application/json",
             'Authorization': `Bearer ${token}`
           }
         });
-        const sellHistory = await axios.get('http://localhost:7000/sale/data', {
+        const sellHistory = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/sale/data`, {
           headers: {
             "Content-Type": "application/json",
             'Authorization': `Bearer ${token}`
@@ -71,7 +71,7 @@ const Profile = () => {
   }
   const deleteRentItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:7000/rent/delete/${id}`);
+      await axios.delete(`${VITE_SERVER_LINK}/rent/delete/${id}`);
       window.location.reload();
     }
     catch (error) {
@@ -80,7 +80,7 @@ const Profile = () => {
   }
   const deleteSellItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:7000/sale/delete/${id}`);
+      await axios.delete(`${import.meta.env.VITE_SERVER_LINK}/sale/delete/${id}`);
       window.location.reload();
     }
     catch (error) {
