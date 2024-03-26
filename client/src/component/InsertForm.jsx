@@ -57,7 +57,7 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
     axios({
       method: 'post',
       // url: `${import.meta.env.VITE_SERVER_LINK}/${formUrl}`,
-      url: `http://localhost:7000/${formUrl}`,
+      url: `${import.meta.env.VITE_SERVER_LINK}/${formUrl}`,
       headers: { 'Content-Type': 'multipart/form-data' },
       data: formData
     }).then((res) => {
@@ -66,7 +66,7 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
       console.log(err)
     });
   };
-  console.log(errors);
+  console.log(errors.owner);
   return (
     <div>
       {error ?
@@ -164,7 +164,7 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
               {errors.vehicleImg && <p className={form.error}>{errors.vehicleImg.message}</p>}
               <div className={form.btn}>
                 <button type='submit' className={form.submit}  >Insert</button>
-                <button className={form.cancel} onClick={navigate('/profile')}>Cancel</button>
+                <button className={form.cancel} onClick={()=>navigate('/profile')}>Cancel</button>
               </div>
             </form>
           </div>
