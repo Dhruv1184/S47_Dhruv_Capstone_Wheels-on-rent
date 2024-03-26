@@ -11,6 +11,7 @@ const RentList = () => {
     const navigate = useNavigate()
     const [rentData, setData] = useState([])
     const [error, setError] = useState("")
+    // const [users, setUser] = useState([])
     const { isAuthenticated, user, getAccessTokenSilently, isLoading } = useAuth0()
     useEffect(() => {
         setError('')
@@ -25,7 +26,7 @@ const RentList = () => {
                     }
                 })
                 setData(res.data.Data)
-                setUser(res.data.user)
+                // setUser(res.data.user)
             } else {
                 setError("Please Login First")
             }
@@ -64,7 +65,8 @@ const RentList = () => {
 
     return (
         <div className={rent.main}>
-            {error ? <div className={rent.error}>
+            {error ? 
+            <div className={rent.error}>
             <h1 ><lord-icon
                 src="https://cdn.lordicon.com/usownftb.json"
                 trigger="hover"
