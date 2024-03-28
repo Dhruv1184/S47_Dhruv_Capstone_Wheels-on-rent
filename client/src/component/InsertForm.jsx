@@ -38,7 +38,7 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
     console.log(data);
     console.log(errors);
     alert('Data inserted successfully');
-    // navigate('/profile');
+    navigate('/profile');
 
     const formData = new FormData();
     formData.append('owner', data.owner);
