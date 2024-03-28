@@ -71,7 +71,15 @@ const Profile = () => {
   const deleteRentItem = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_SERVER_LINK}/rent/delete/${id}`);
-      window.location.reload();
+      const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token');
+      const history = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/rent/data`, {
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const historyData = history.data.Data.filter(item => item.email === userEmail);
+    setHistory(historyData);
     }
     catch (error) {
       console.log(error);
@@ -80,7 +88,15 @@ const Profile = () => {
   const deleteSellItem = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_SERVER_LINK}/sale/delete/${id}`);
-      window.location.reload();
+      const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token');
+      const sellHistory = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/sale/data`, {
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const sellHistoryData = sellHistory.data.filter(item => item.email === userEmail);
+      setSellHistory(sellHistoryData);
     }
     catch (error) {
       console.log(error);
