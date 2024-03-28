@@ -17,7 +17,7 @@ const SaleList = () => {
         setError('')
         const getSaleData = async () => {
             const token = isAuthenticated ? await getAccessTokenSilently() : localStorage.getItem('token')
-            console.log("ls", token);
+            // console.log("ls", token);
             if (token) {
                 const res = await axios.get(`${import.meta.env.VITE_SERVER_LINK}/sale/data`, {
                     headers: {
@@ -36,8 +36,8 @@ const SaleList = () => {
     if(isLoading){
         return <div className={rent.loading}>Loading...</div>
     }
-    console.log(isAuthenticated)
-    console.log(user)
+    // console.log(isAuthenticated)
+    // console.log(user)
 
     return (
         <div className={rent.main}>

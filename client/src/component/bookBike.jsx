@@ -34,7 +34,7 @@ const BookBike = ({type}) => {
             window.open(WhatsappUrl,'_blank')
         }
     }
-    console.log(data)
+    // console.log(data)
   return (
     <div className={book.main}>
         <div className={book.bikeDetail} >

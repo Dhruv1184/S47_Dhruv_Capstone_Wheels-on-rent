@@ -50,7 +50,6 @@ const Profile = () => {
           setUserEmail(history.data.user.email);
         }
         setIsDataFetched(true);
-        console.log(userEmail);
         const profile = res.data.find(profile => profile.email === userEmail);
         const historyData = history.data.Data.filter(item => item.email === userEmail);
         const sellHistoryData = sellHistory.data.filter(item => item.email === userEmail);

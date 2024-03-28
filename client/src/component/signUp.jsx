@@ -10,8 +10,8 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-    const { loginWithRedirect, isAuthenticated,isLoading } = useAuth0()
-    const navigate = useNavigate()
+  const { loginWithRedirect, isAuthenticated,isLoading } = useAuth0()
+  const navigate = useNavigate()
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -37,7 +37,7 @@ const SignUp = () => {
         }
       })
         .then(res => {
-          console.log(res)
+          // console.log(res)
           localStorage.setItem('token', res.data.token)
           navigate('/rent')
         })

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import landing from '../css/landing.module.css'
 import logo from '../assets/WebLogo.png'
-import { brand } from '../jsFile/brand'
+import {brand} from '../jsFile/brand.jsx'
 import { useNavigate } from 'react-router'
 import { useAuth0 } from '@auth0/auth0-react'
 import Footer from './footer'
@@ -9,7 +9,6 @@ import Footer from './footer'
 const Landing = () => {
   const navigate = useNavigate()
   const { isLoading,isAuthenticated } = useAuth0()
-  console.log(brand);
   if (isLoading) {
     return <div className={landing.loading}>Loading...</div>;
   }

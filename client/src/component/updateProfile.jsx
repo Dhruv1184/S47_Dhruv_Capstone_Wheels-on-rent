@@ -26,12 +26,12 @@ const UpdateProfile = () => {
                 console.log(err)
             })
     }, [])
-    console.log(data)
+    // console.log(data)
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.put(`${import.meta.env.VITE_SERVER_LINK}/user/update/${id}`, { name, contact, address, pincode })
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 navigate('/profile')
                 alert('Profile updated successfully')
             }).catch(err => {
