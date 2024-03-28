@@ -5,10 +5,25 @@ import {brand} from '../jsFile/brand.jsx'
 import { useNavigate } from 'react-router'
 import { useAuth0 } from '@auth0/auth0-react'
 import Footer from './footer'
-
+import RE from '../../assets/RE.png'
+import bajaj from '../../assets/bajaj.png'
+import bmw from '../../assets/BMW.png'
+import harley from '../../assets/harley-davidson.png'
+import honda from '../../assets/Honda.png'
+import ktm from '../../assets/KTM.png'
+import hero from '../../assets/hero.png'
+import ola from '../../assets/ola.png'
+import suzuki from '../../assets/Suzuki.png'
+import triumph from '../../assets/triumph.png'
+import tvs from '../../assets/TVS.png'
+import yamaha from '../../assets/Yamaha.png'
+import java from '../../assets/Java.png'
+import mahindra from '../../assets/Mahindra.png'
+import revolt from '../../assets/Revolt.png'
 const Landing = () => {
   const navigate = useNavigate()
   const { isLoading,isAuthenticated } = useAuth0()
+  // console.log(brand);
   if (isLoading) {
     return <div className={landing.loading}>Loading...</div>;
   }
