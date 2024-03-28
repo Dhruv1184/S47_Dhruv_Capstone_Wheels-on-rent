@@ -24,7 +24,7 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
             }
           })
           setUserEmail(res.data.user.email)
-          console.log(res.data)
+          // console.log(res.data)
         } else {
           setError("Please Login First")
         }
@@ -35,7 +35,7 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
     AuthDataInsert()
   }, [isAuthenticated])
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     console.log(errors);
     alert('Data inserted successfully');
     navigate('/profile');
@@ -66,7 +66,6 @@ const InsertForm = ({ formTitle, formUrl, cost }) => {
       console.log(err)
     });
   };
-  console.log(errors.owner);
   return (
     <div>
       {error ?

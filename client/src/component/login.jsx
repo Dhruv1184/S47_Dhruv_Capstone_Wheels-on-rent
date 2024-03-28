@@ -25,7 +25,7 @@ const Login = () => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         }}
       )
-      console.log(response.data)
+      // console.log(response.data)
       localStorage.setItem('token', response.data)
       navigate('/rent')
     } catch (error) {
