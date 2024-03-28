@@ -71,7 +71,7 @@ const Profile = () => {
   }
   const deleteRentItem = async (id) => {
     try {
-      await axios.delete(`${VITE_SERVER_LINK}/rent/delete/${id}`);
+      await axios.delete(`${import.meta.env.VITE_SERVER_LINK}/rent/delete/${id}`);
       window.location.reload();
     }
     catch (error) {
