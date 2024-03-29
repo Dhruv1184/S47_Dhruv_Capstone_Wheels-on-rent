@@ -15,7 +15,7 @@ const SignUp = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if(isAuthenticated){
+  if(isAuthenticated || localStorage.getItem('token')){
     navigate('/rent')
   }
   const validatePassword = (password) => {
@@ -69,7 +69,7 @@ const SignUp = () => {
             </div>
             <button type="submit" className={signup.signupBtn} onClick={(e)=>handleSubmit(e)}>signup</button>
         </form>
-        <p className={signup.p}>Already have an account? <a href="/login">login</a></p>
+        <span className={signup.p}>Already have an account? <span className={signup.login} onClick={() => navigate('/login')}>Login</span></span>
         <div className={signup.or}>
             <hr />
             <span>OR</span>

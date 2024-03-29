@@ -6,8 +6,8 @@ const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
 const user = express()
-const verifyToken = require("../middleware/jwt.middleware.js")
-const loginMiddleware = require("../middleware/login.middleware.js")
+// const verifyToken = require("../middleware/jwt.middleware.js")
+// const loginMiddleware = require("../middleware/login.middleware.js")
 user.use(express.json())
 user.use(cookieParser())
 mongoose.connect(process.env.Mongoose_URL, {

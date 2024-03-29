@@ -27,7 +27,7 @@ const Landing = () => {
   if (isLoading) {
     return <div className={landing.loading}>Loading...</div>;
   }
-  if(isAuthenticated){
+  if(isAuthenticated || localStorage.getItem('token')) {
     navigate('/rent')
   }
   return (
