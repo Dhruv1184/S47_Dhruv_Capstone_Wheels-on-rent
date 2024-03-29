@@ -154,7 +154,7 @@ const Profile = () => {
                   <div key={data._id} className={profile.box}>
                     <div>
                       {data.vehicleImg.length > 0 && (
-                        <img src={`http://localhost:7000/${data.vehicleImg[0].replace(/\\/g, '/')}`} alt="Vehicle Image" className={profile.vehicleImg} />
+                        <img src={`${import.meta.env.VITE_SERVER_LINK}/${data.vehicleImg[0].replace(/\\/g, '/')}`} alt="Vehicle Image" className={profile.vehicleImg} />
                       )}
                     </div>
                     <div className={profile.info}>
