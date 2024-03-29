@@ -41,8 +41,8 @@ const BookBike = ({type}) => {
             <h1>Bike Detail</h1>
             <div className={book.bikeContainer}>
                 <div className={book.images}>
-                    {data.vehicleImg && <img src={`${import.meta.env.VITE_SERVER}/${data.vehicleImg[0].replace(/\\/g, '/')}`} alt="bike Image" className={book.img} />}
-                    {data.ownerImg && <img src={`${import.meta.env.VITE_SERVER}/${data.ownerImg[0].replace(/\\/g, '/')}`} alt="owner Image"  className={book.img}/>}
+                    {data.vehicleImg && <img src={`${import.meta.env.VITE_SERVER_LINK}/${data.vehicleImg[0].replace(/\\/g, '/')}`} alt="bike Image" className={book.img} />}
+                    {data.ownerImg && <img src={`${import.meta.env.VITE_SERVER_LINK}/${data.ownerImg[0].replace(/\\/g, '/')}`} alt="owner Image"  className={book.img}/>}
                 </div>
                 <p>Owner name: <span className={book.detail}>{data.owner}</span> </p>
                 <p>Model: <span className={book.detail}>{data.model}</span> </p>
