@@ -12,7 +12,7 @@ const Login = () => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if(isAuthenticated){
+  if(isAuthenticated || localStorage.getItem('token')){
     navigate('/rent')
   }
 
@@ -52,7 +52,7 @@ const Login = () => {
             </div>
             <button type="submit" className={login.loginBtn} onClick={(e)=>handleSubmit(e)}>Login</button>
         </form>
-        <p className={login.p}>Don't have an account? <a href="/signup">Signup</a></p>
+        <span className={login.p}>Don't have an account? <span className={login.signup} onClick={() => navigate('/signup')}>Signup</span></span>
         <div className={login.or}>
             <hr />
             <span>OR</span>

@@ -66,3 +66,8 @@ hr{
     font-size: 3vh;
     border: none;
 }
+.signup{
+    font-size: 5vh;
+    cursor: pointer;
+    color: rgb(124, 13, 227);
+}
