@@ -93,16 +93,24 @@
     .main{
         flex-direction: column;
         height: 100%;
+        width: 100%;
     }
-     .bookingDetail{
+    .bookingDetail{
         margin-top: 2vh;
         width:85vw;
     } 
-    /* .bikeContainer{
-        width: 75vw;
-    } */
+    .bikeContainer{
+        width: 85vw;
+    }
     .bookbtn{
         width: 30vw;
         
+    }
+    .images{
+        display: flex;
+        flex-direction: column;
+    }
+    .img{
+        height: 20vh;
     }
 }
