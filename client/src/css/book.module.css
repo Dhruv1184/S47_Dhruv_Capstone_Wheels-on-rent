@@ -88,3 +88,20 @@
     color: red;
     font-size: 3vh;
 }
+
+@media screen and (max-width: 650px){
+    .main{
+        flex-direction: column;
+        height: 100%;
+    }
+    .bookingDetail{
+        margin-top: 2vh;
+    }
+    .bikeContainer{
+        width: 75vw;
+    }
+    .bookbtn{
+        width: 30vw;
+        
+    }
+}

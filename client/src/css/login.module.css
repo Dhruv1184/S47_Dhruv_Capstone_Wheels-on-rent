@@ -1,73 +1,121 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.main{
-    font-family:unset ;
+
+.main {
+    font-family: unset;
     border: 1px solid black;
     text-align: center;
     width: max-content;
-    margin:auto;
+    margin: auto;
     padding: 3vh 3vw;
     line-height: 5vh;
     border-radius: 2vh;
     background-color: rgba(255, 255, 255, 0.528);
     backdrop-filter: blur(1vh);
 }
-.or{
+
+.or {
     display: flex;
     align-items: center;
     font-size: 5vh;
 }
-hr{
+
+hr {
     width: 50%;
     height: 1px;
     margin: 1vw;
 }
-.logo{
+
+.logo {
     size: 100% 100%;
     height: 20vh;
 }
-.loginBtn{
+
+.loginBtn {
     font-size: 3vh;
     margin: 3vh;
     padding: 1vh 3vw;
     border-radius: 2vh;
     cursor: pointer;
 }
-.inputbox{
+
+.inputbox {
     display: flex;
     justify-content: space-between;
     margin: 2vh 0;
-    align-items:center ;
+    align-items: center;
     cursor: pointer;
 }
-.LoginWithGoogle{
+
+.LoginWithGoogle {
     font-size: 3vh;
     padding: 1vh 2vw;
     border-radius: 2vh;
     margin: 2vh;
     cursor: pointer;
 }
-.heading{
+
+.heading {
     font-size: 9vh;
     margin: 4vh;
 }
-.body{
+
+.body {
     background: url('../assets/login.jpg');
     background-size: 100% 100%;
     height: 100vh;
     padding: 2vh;
 }
-.p{
+
+.p {
     font-size: 4vh;
 }
-.input{
+
+.input {
     font-size: 3vh;
     border: none;
 }
-.signup{
+
+.signup {
     font-size: 5vh;
     cursor: pointer;
     color: rgb(124, 13, 227);
+}
+
+@media screen and (max-width: 650px) {
+    .body {
+        width: 100vw;
+        height: 103vh;
+    }
+
+    .p {
+        font-size: 3vh;
+    }
+
+    .signup {
+        font-size: 3vh;
+    }
+
+    .LoginWithGoogle {
+        font-size: 3vh;
+    }
+
+    .heading {
+        font-size: 5vh;
+    }
+
+    .loginBtn {
+        font-size: 2vh;
+    }
+    .input{
+        font-size: 3vh;
+    }
+    .inputbox{
+        font-size: 20%;
+    }
+    .label{
+        font-size: 3vh;
+    }
 }

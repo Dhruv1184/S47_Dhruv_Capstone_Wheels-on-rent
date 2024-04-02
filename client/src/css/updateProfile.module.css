@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #03254c;
-    width: 35vw;
+    width: max-content;
     padding: 2vh;
     margin: 7vh 10vw;
     border-radius: 2vh;
@@ -59,4 +59,13 @@
     display: flex;
     justify-content: space-between;
     margin: 2vh 0;
+}
+
+@media screen and (max-width: 650px){
+    .form{
+        font-size: 2vh;
+    }
+    .inputData{
+        column-gap: 5vh;
+    }
 }

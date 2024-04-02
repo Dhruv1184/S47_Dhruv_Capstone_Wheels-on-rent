@@ -127,3 +127,17 @@
     text-align: center;
     margin-top: 40vh;
 }
+@media screen and (max-width: 650px){
+    .heading{
+        font-size: 4vh;
+        margin-top: 4vh;
+    }
+    .bookbtn{
+        border-radius: 2vh;
+        width: 20vw;
+        font-size: 2vh;
+    }
+    .vehicleImg{
+        width: 90%;
+    }
+}

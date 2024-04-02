@@ -151,3 +151,29 @@
     text-align: center;
     margin-top: 40vh;
 }
+@media screen and (max-width: 650px){
+    .bookbtn{
+        font-size: 2vh;
+        width: 15vw;
+    }
+    .select{
+        margin-left: 2vw;
+    }
+    .heading{
+        margin-left: 30vw;
+        font-size: 5vh;
+    }
+    .profileData{
+        font-size: 2vh;
+        flex-direction: column;
+    }
+    .profileImg{
+        height: 15vh;
+    }
+    .text{
+        line-height:4vh;
+    }
+    .vehicleImg{
+        width: 40vw;
+    }
+}

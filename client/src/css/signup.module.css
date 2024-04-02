@@ -73,3 +73,37 @@ hr{
     cursor: pointer;
     color: rgb(124, 13, 227);
 }
+
+
+@media screen and (max-width: 650px) {
+    .body {
+        width: 100vw;
+        height: 103vh;
+    }
+
+    .p {
+        font-size: 90%;
+    }
+
+    .login {
+        font-size: 3vh;
+    }
+
+    .LoginWithGoogle {
+        font-size: 3vh;
+    }
+
+    .heading {
+        font-size: 5vh;
+    }
+
+    .signupBtn {
+        font-size: 2vh;
+    }
+    .input{
+        font-size: 100%;
+    }
+    .label{
+        font-size: 100%;
+    }
+}
