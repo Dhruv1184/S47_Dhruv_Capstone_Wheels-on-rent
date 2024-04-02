@@ -43,11 +43,11 @@ const Login = () => {
         <img src={logo} className={login.logo} alt="Logo" />
         <form>
             <div className={login.inputbox}>
-                <label htmlFor="email">Email: </label>
+                <label htmlFor="email" className={login.label}>Email: </label>
                 <input type="email" required placeholder='Enter Email' id="email" onChange={(e) => setEmail(e.target.value)} className={login.input} />
             </div>
             <div className={login.inputbox}>
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="password" className={login.label}>Password: </label>
                 <input type="password" required placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} id="password" className={login.input} />
             </div>
             <button type="submit" className={login.loginBtn} onClick={(e)=>handleSubmit(e)}>Login</button>

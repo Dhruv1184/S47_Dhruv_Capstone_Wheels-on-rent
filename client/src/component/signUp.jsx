@@ -52,19 +52,19 @@ const SignUp = () => {
         <img src={logo} className={signup.logo} alt="Logo" />
         <form>
             <div className={signup.inputbox}>
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="name" className={signup.label}>Name:</label>
                 <input type="text" required placeholder='Enter Name' id="name" onChange={(e) => setName(e.target.value)} className={signup.input} />
             </div>
             <div className={signup.inputbox}>
-                <label htmlFor="email">Email: </label>
+                <label htmlFor="email" className={signup.label}>Email: </label>
                 <input type="email" required placeholder='Enter Email' id="email" onChange={(e) => setEmail(e.target.value)} className={signup.input} />
             </div>
             <div className={signup.inputbox}>
-                <label htmlFor="password">Password: </label>
+                <label htmlFor="password" className={signup.label}>Password: </label>
                 <input type="password" required placeholder='Enter Password' id="password" onChange={(e) => setPassword(e.target.value )} className={signup.input} />
             </div>
             <div className={signup.inputbox}>
-                <label htmlFor="confirmPassword">Confirm Password: </label>
+                <label htmlFor="confirmPassword" className={signup.label}>Confirm Password: </label>
                 <input type="password" required placeholder='Enter Password' id="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} className={signup.input} />
             </div>
             <button type="submit" className={signup.signupBtn} onClick={(e)=>handleSubmit(e)}>signup</button>
