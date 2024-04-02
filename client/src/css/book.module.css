@@ -46,7 +46,7 @@
     font-size: 4vh;
     padding: 2vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
+    /* text-align: center; */
 }
 .bookingDetail{
     backdrop-filter: blur(20vh);
@@ -94,12 +94,13 @@
         flex-direction: column;
         height: 100%;
     }
-    .bookingDetail{
+     .bookingDetail{
         margin-top: 2vh;
-    }
-    .bikeContainer{
+        width:85vw;
+    } 
+    /* .bikeContainer{
         width: 75vw;
-    }
+    } */
     .bookbtn{
         width: 30vw;
         
